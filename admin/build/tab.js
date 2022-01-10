@@ -45,7 +45,7 @@ import {
   require_utils2,
   require_zh_cn,
   styled_default
-} from "./chunk-MDR2AFO3.js";
+} from "./chunk-HBPZ5HBF.js";
 
 // node_modules/react-error-boundary/dist/react-error-boundary.umd.js
 var require_react_error_boundary_umd = __commonJS({
@@ -418,12 +418,6 @@ var NotRunning = () => {
   return /* @__PURE__ */ import_react2.default.createElement(Message, {
     severity: "error"
   }, _("adapter not ready"));
-};
-var NoDevices = () => {
-  const {translate: _} = (0, import_hooks.useI18n)();
-  return /* @__PURE__ */ import_react2.default.createElement(Message, {
-    severity: "info"
-  }, _("No devices present"));
 };
 
 // admin/src/pages/AddNewDevices.tsx
@@ -1092,13 +1086,22 @@ var import_react7 = __toModule(require_react());
 var import_iobroker_react2 = __toModule(require_build());
 var ListDevices = (props) => {
   const {alive: adapterRunning, connected: driverReady} = (0, import_iobroker_react2.useAdapter)();
-  if (!adapterRunning || !driverReady)
-    return /* @__PURE__ */ import_react7.default.createElement(NotRunning, null);
-  if (!props.devices)
-    return /* @__PURE__ */ import_react7.default.createElement(NoDevices, null);
+  const [selectIdValue, setSelectIdValue] = import_react7.default.useState();
+  const {showSelectId} = (0, import_iobroker_react2.useDialogs)();
   return /* @__PURE__ */ import_react7.default.createElement("div", {
     id: "ListDevices"
-  }, "ListDevices");
+  }, /* @__PURE__ */ import_react7.default.createElement(Button_default, {
+    onClick: () => {
+      {
+        console.log("click to open selectID");
+        console.log("showSelectId", showSelectId);
+        showSelectId("test", () => {
+          console.log("onClose");
+        }, setSelectIdValue, selectIdValue);
+      }
+    },
+    variant: "outlined"
+  }, "SelectID"), /* @__PURE__ */ import_react7.default.createElement("br", null), /* @__PURE__ */ import_react7.default.createElement("br", null), "SelectIDs: ", JSON.stringify(selectIdValue));
 };
 
 // admin/src/lib/useDevices.ts
