@@ -28,7 +28,7 @@ import {
   require_ru,
   require_styles,
   require_zh_cn
-} from "./chunk-FD7N5BRU.js";
+} from "./chunk-F7J2VCQX.js";
 
 // node_modules/@iobroker/adapter-react/Theme.js
 var require_Theme = __commonJS({
