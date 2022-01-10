@@ -33,7 +33,7 @@ export const ListDevices: React.FC<DevicesProps> = (props) => {
 	// if (!props.devices) return <NoDevices />;
 	return (
 		<div id="ListDevices">
-			{showSelectId('test', connection, setSelectIdValue, triggerSelectId)};
+			{showSelectId('test', connection, setSelectIdValue, triggerSelectId)}
 			<Button
 				onClick={() => {
 					{

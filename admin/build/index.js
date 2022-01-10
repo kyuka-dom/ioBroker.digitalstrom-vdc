@@ -6,10 +6,11 @@ import {
   Button_default,
   Grid_default,
   TextField_default,
-  ThemeProvider_default,
   Tooltip_default,
   __commonJS,
   __toModule,
+  import_system,
+  material_exports,
   require_Utils,
   require_app,
   require_de,
@@ -27,7 +28,7 @@ import {
   require_ru,
   require_styles,
   require_zh_cn
-} from "./chunk-66IBHZNV.js";
+} from "./chunk-FD7N5BRU.js";
 
 // node_modules/@iobroker/adapter-react/Theme.js
 var require_Theme = __commonJS({
@@ -454,7 +455,7 @@ var translations = {
   "zh-cn": require_zh_cn()
 };
 var Root = () => {
-  return /* @__PURE__ */ import_react.default.createElement(ThemeProvider_default, {
+  return /* @__PURE__ */ import_react.default.createElement(import_system.ThemeProvider, {
     theme: (0, import_Theme.default)(themeName)
   }, /* @__PURE__ */ import_react.default.createElement(import_app.SettingsApp, {
     name: "digitalstrom-vdc",

@@ -1,6 +1,7 @@
 import React from 'react';
 import DialogSelectID from '@iobroker/adapter-react/Dialogs/SelectID';
 import { CreateCSSProperties, withStyles } from '@mui/styles';
+import 'regenerator-runtime/runtime';
 
 interface SelectIDProps {
 	dialogName: string;

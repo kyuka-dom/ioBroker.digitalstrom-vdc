@@ -1,16 +1,24 @@
 import {
   Alert_default,
+  Box_default,
   Button_default,
+  DialogActions_default,
+  DialogContent_default,
+  DialogTitle_default,
+  Dialog_default,
+  FormControl_default,
+  Grid_default,
+  IconButton_default,
+  InputLabel_default,
+  MenuItem_default,
+  Select_default,
   Tab_default,
   Tabs_default,
+  TextField_default,
+  Tooltip_default,
   __commonJS,
   __toModule,
-  capitalize,
-  deepmerge,
-  exactProp,
-  getDisplayName,
-  nested_default,
-  ponyfillGlobal_default,
+  material_exports,
   require_Badge,
   require_Box,
   require_Button,
@@ -44,6 +52,7 @@ import {
   require_Snackbar,
   require_Switch,
   require_TextField,
+  require_ThemeProvider,
   require_Tooltip,
   require_Typography,
   require_Utils,
@@ -73,18 +82,22 @@ import {
   require_ru,
   require_styles,
   require_tiny_warning_cjs,
+  require_useTheme,
+  require_utils,
+  require_utils2,
+  require_utils3,
   require_withStyles,
   require_withWidth,
   require_zh_cn,
-  useTheme
-} from "./chunk-66IBHZNV.js";
+  styled_default
+} from "./chunk-FD7N5BRU.js";
 
 // node_modules/react-error-boundary/dist/react-error-boundary.umd.js
 var require_react_error_boundary_umd = __commonJS({
   "node_modules/react-error-boundary/dist/react-error-boundary.umd.js"(exports, module) {
     (function(global, factory) {
       typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require_react()) : typeof define === "function" && define.amd ? define(["exports", "react"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ReactErrorBoundary = {}, global.React));
-    })(exports, function(exports2, React11) {
+    })(exports, function(exports2, React18) {
       "use strict";
       function _interopNamespace(e) {
         if (e && e.__esModule)
@@ -106,7 +119,7 @@ var require_react_error_boundary_umd = __commonJS({
         n["default"] = e;
         return Object.freeze(n);
       }
-      var React__namespace = /* @__PURE__ */ _interopNamespace(React11);
+      var React__namespace = /* @__PURE__ */ _interopNamespace(React18);
       function _setPrototypeOf2(o, p) {
         _setPrototypeOf2 = Object.setPrototypeOf || function _setPrototypeOf3(o2, p2) {
           o2.__proto__ = p2;
@@ -272,7 +285,7 @@ var require_Dropdown = __commonJS({
     var MenuItem_1 = __importDefault(require_MenuItem());
     var OutlinedInput_1 = __importDefault(require_OutlinedInput());
     var Select_1 = __importDefault(require_Select());
-    var React11 = __importStar(require_react());
+    var React18 = __importStar(require_react());
     var Dropdown = (props) => {
       const {options, selectedOption, noOptionsMessage, placeholder} = props, otherProps = __rest(props, ["options", "selectedOption", "noOptionsMessage", "placeholder"]);
       const hasOptions = !!options && options.length;
@@ -280,7 +293,7 @@ var require_Dropdown = __commonJS({
       let value;
       if (options === null || options === void 0 ? void 0 : options.length)
         value = selectedOption;
-      return React11.createElement(Select_1.default, Object.assign({value: value !== null && value !== void 0 ? value : "", displayEmpty: true, input: React11.createElement(OutlinedInput_1.default, {labelWidth: 0}), margin: "dense"}, otherProps), React11.createElement(MenuItem_1.default, {value: "", disabled: true}, placeholder !== null && placeholder !== void 0 ? placeholder : ""), options && options.length && options.map(({value: value2, label}) => React11.createElement(MenuItem_1.default, {key: value2, value: value2}, label)), showNoOptionsMessage && React11.createElement(MenuItem_1.default, {key: "__empty", value: "__empty", disabled: true}, noOptionsMessage));
+      return React18.createElement(Select_1.default, Object.assign({value: value !== null && value !== void 0 ? value : "", displayEmpty: true, input: React18.createElement(OutlinedInput_1.default, {labelWidth: 0}), margin: "dense"}, otherProps), React18.createElement(MenuItem_1.default, {value: "", disabled: true}, placeholder !== null && placeholder !== void 0 ? placeholder : ""), options && options.length && options.map(({value: value2, label}) => React18.createElement(MenuItem_1.default, {key: value2, value: value2}, label)), showNoOptionsMessage && React18.createElement(MenuItem_1.default, {key: "__empty", value: "__empty", disabled: true}, noOptionsMessage));
     };
     exports.Dropdown = Dropdown;
   }
@@ -351,6 +364,53 @@ var require_build = __commonJS({
   }
 });
 
+// node_modules/@mui/icons-material/node_modules/@babel/runtime/helpers/interopRequireDefault.js
+var require_interopRequireDefault2 = __commonJS({
+  "node_modules/@mui/icons-material/node_modules/@babel/runtime/helpers/interopRequireDefault.js"(exports, module) {
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : {
+        "default": obj
+      };
+    }
+    module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
+  }
+});
+
+// node_modules/@mui/icons-material/utils/createSvgIcon.js
+var require_createSvgIcon2 = __commonJS({
+  "node_modules/@mui/icons-material/utils/createSvgIcon.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    Object.defineProperty(exports, "default", {
+      enumerable: true,
+      get: function() {
+        return _utils.createSvgIcon;
+      }
+    });
+    var _utils = require_utils3();
+  }
+});
+
+// node_modules/@mui/icons-material/Close.js
+var require_Close2 = __commonJS({
+  "node_modules/@mui/icons-material/Close.js"(exports) {
+    "use strict";
+    var _interopRequireDefault = require_interopRequireDefault2();
+    Object.defineProperty(exports, "__esModule", {
+      value: true
+    });
+    exports.default = void 0;
+    var _createSvgIcon = _interopRequireDefault(require_createSvgIcon2());
+    var _jsxRuntime = require_jsx_runtime();
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ (0, _jsxRuntime.jsx)("path", {
+      d: "M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+    }), "Close");
+    exports.default = _default;
+  }
+});
+
 // node_modules/@material-ui/icons/Cancel.js
 var require_Cancel = __commonJS({
   "node_modules/@material-ui/icons/Cancel.js"(exports) {
@@ -361,9 +421,9 @@ var require_Cancel = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
     }), "Cancel");
     exports.default = _default;
@@ -380,9 +440,9 @@ var require_Check = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
     }), "Check");
     exports.default = _default;
@@ -972,7 +1032,7 @@ var require_lib = __commonJS({
     };
     Object.defineProperty(exports, "__esModule", {value: true});
     exports.convertFromString = exports.convertFromNode = void 0;
-    var React11 = require_react();
+    var React18 = require_react();
     var helpers_1 = require_helpers();
     function parseAttributes(node, reactKey) {
       var attributes = {
@@ -1077,7 +1137,7 @@ var require_lib = __commonJS({
       }
       switch (node.nodeType) {
         case 1: {
-          return React11.createElement(parseName(node.nodeName), parseAttributes(node, key), parseChildren(node.childNodes, level, options));
+          return React18.createElement(parseName(node.nodeName), parseAttributes(node, key), parseChildren(node.childNodes, level, options));
         }
         case 3: {
           var nodeText = ((_a = node.nodeValue) === null || _a === void 0 ? void 0 : _a.toString()) || "";
@@ -1327,7 +1387,7 @@ var require_lib2 = __commonJS({
     };
     Object.defineProperty(exports, "__esModule", {value: true});
     exports.cacheStore = void 0;
-    var React11 = require_react();
+    var React18 = require_react();
     var react_from_dom_1 = require_lib();
     var helpers_1 = require_helpers2();
     exports.cacheStore = Object.create(null);
@@ -1546,7 +1606,7 @@ var require_lib2 = __commonJS({
         try {
           var node = this.getNode();
           var element = react_from_dom_1.default(node);
-          if (!element || !React11.isValidElement(element)) {
+          if (!element || !React18.isValidElement(element)) {
             throw new Error("Could not convert the src to a React element");
           }
           this.setState({
@@ -1598,7 +1658,7 @@ var require_lib2 = __commonJS({
           return loader;
         }
         if (element) {
-          return React11.cloneElement(element, __assign({ref: innerRef}, elementProps));
+          return React18.cloneElement(element, __assign({ref: innerRef}, elementProps));
         }
         if ([helpers_1.STATUS.UNSUPPORTED, helpers_1.STATUS.FAILED].indexOf(status) > -1) {
           return children;
@@ -1610,7 +1670,7 @@ var require_lib2 = __commonJS({
         uniquifyIDs: false
       };
       return InlineSVG2;
-    }(React11.PureComponent);
+    }(React18.PureComponent);
     exports.default = InlineSVG;
     __exportStar(require_types(), exports);
   }
@@ -1626,9 +1686,9 @@ var require_Edit = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
     }), "Edit");
     exports.default = _default;
@@ -1645,9 +1705,9 @@ var require_Delete = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
     }), "Delete");
     exports.default = _default;
@@ -1664,9 +1724,9 @@ var require_Settings = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"
     }), "Settings");
     exports.default = _default;
@@ -1683,9 +1743,9 @@ var require_SettingsApplications = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm7-7H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-1.75 9c0 .23-.02.46-.05.68l1.48 1.16c.13.11.17.3.08.45l-1.4 2.42c-.09.15-.27.21-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.26 1.85c-.03.17-.18.3-.35.3h-2.8c-.17 0-.32-.13-.35-.29l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.74.7c-.16.06-.34 0-.43-.15l-1.4-2.42c-.09-.15-.05-.34.08-.45l1.48-1.16c-.03-.23-.05-.46-.05-.69 0-.23.02-.46.05-.68l-1.48-1.16c-.13-.11-.17-.3-.08-.45l1.4-2.42c.09-.15.27-.21.43-.15l1.74.7c.36-.28.76-.51 1.18-.69l.26-1.85c.03-.17.18-.3.35-.3h2.8c.17 0 .32.13.35.29l.26 1.85c.43.18.82.41 1.18.69l1.74-.7c.16-.06.34 0 .43.15l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.16c.03.23.05.46.05.69z"
     }), "SettingsApplications");
     exports.default = _default;
@@ -1702,9 +1762,9 @@ var require_Photo = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
     }), "Photo");
     exports.default = _default;
@@ -1721,9 +1781,9 @@ var require_SupervisedUserCircle = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M11.99 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm3.61 6.34c1.07 0 1.93.86 1.93 1.93 0 1.07-.86 1.93-1.93 1.93-1.07 0-1.93-.86-1.93-1.93-.01-1.07.86-1.93 1.93-1.93zm-6-1.58c1.3 0 2.36 1.06 2.36 2.36 0 1.3-1.06 2.36-2.36 2.36s-2.36-1.06-2.36-2.36c0-1.31 1.05-2.36 2.36-2.36zm0 9.13v3.75c-2.4-.75-4.3-2.6-5.14-4.96 1.05-1.12 3.67-1.69 5.14-1.69.53 0 1.2.08 1.9.22-1.64.87-1.9 2.02-1.9 2.68zM11.99 20c-.27 0-.53-.01-.79-.04v-4.07c0-1.42 2.94-2.13 4.4-2.13 1.07 0 2.92.39 3.84 1.15-1.17 2.97-4.06 5.09-7.45 5.09z"
     }), "SupervisedUserCircle");
     exports.default = _default;
@@ -1740,9 +1800,9 @@ var require_CalendarToday = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"
     }), "CalendarToday");
     exports.default = _default;
@@ -1759,9 +1819,9 @@ var require_PersonOutlined = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
     }), "PersonOutlined");
     exports.default = _default;
@@ -1778,9 +1838,9 @@ var require_Router = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M20.2 5.9l.8-.8C19.6 3.7 17.8 3 16 3s-3.6.7-5 2.1l.8.8C13 4.8 14.5 4.2 16 4.2s3 .6 4.2 1.7zm-.9.8c-.9-.9-2.1-1.4-3.3-1.4s-2.4.5-3.3 1.4l.8.8c.7-.7 1.6-1 2.5-1 .9 0 1.8.3 2.5 1l.8-.8zM19 13h-2V9h-2v4H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zM8 18H6v-2h2v2zm3.5 0h-2v-2h2v2zm3.5 0h-2v-2h2v2z"
     }), "Router");
     exports.default = _default;
@@ -1797,9 +1857,9 @@ var require_Wifi = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"
     }), "Wifi");
     exports.default = _default;
@@ -1816,9 +1876,9 @@ var require_Description = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"
     }), "Description");
     exports.default = _default;
@@ -1835,9 +1895,9 @@ var require_Code = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
     }), "Code");
     exports.default = _default;
@@ -1854,9 +1914,9 @@ var require_ShowChart = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"
     }), "ShowChart");
     exports.default = _default;
@@ -1873,9 +1933,9 @@ var require_ListAlt = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M19 5v14H5V5h14m1.1-2H3.9c-.5 0-.9.4-.9.9v16.2c0 .4.4.9.9.9h16.2c.4 0 .9-.5.9-.9V3.9c0-.5-.5-.9-.9-.9zM11 7h6v2h-6V7zm0 4h6v2h-6v-2zm0 4h6v2h-6zM7 7h2v2H7zm0 4h2v2H7zm0 4h2v2H7z"
     }), "ListAlt");
     exports.default = _default;
@@ -1892,9 +1952,9 @@ var require_ViewColumn = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M10 18h5V5h-5v13zm-6 0h5V5H4v13zM16 5v13h5V5h-5z"
     }), "ViewColumn");
     exports.default = _default;
@@ -1911,9 +1971,9 @@ var require_Build = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"
     }), "Build");
     exports.default = _default;
@@ -1930,9 +1990,9 @@ var require_Publish = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z"
     }), "Publish");
     exports.default = _default;
@@ -1949,9 +2009,9 @@ var require_Add = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
     }), "Add");
     exports.default = _default;
@@ -1968,9 +2028,9 @@ var require_Refresh = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
     }), "Refresh");
     exports.default = _default;
@@ -1987,9 +2047,9 @@ var require_LooksOne = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2V9h-2V7h4v10z"
     }), "LooksOne");
     exports.default = _default;
@@ -2006,9 +2066,9 @@ var require_RoomService = __commonJS({
       value: true
     });
     exports.default = void 0;
-    var React11 = _interopRequireWildcard(require_react());
+    var React18 = _interopRequireWildcard(require_react());
     var _createSvgIcon = _interopRequireDefault(require_createSvgIcon());
-    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React11.createElement("path", {
+    var _default = (0, _createSvgIcon.default)(/* @__PURE__ */ React18.createElement("path", {
       d: "M2 17h20v2H2zm11.84-9.21c.1-.24.16-.51.16-.79 0-1.1-.9-2-2-2s-2 .9-2 2c0 .28.06.55.16.79C6.25 8.6 3.27 11.93 3 16h18c-.27-4.07-3.25-7.4-7.16-8.21z"
     }), "RoomService");
     exports.default = _default;
@@ -8891,12 +8951,488 @@ var require_SelectID = __commonJS({
   }
 });
 
+// node_modules/regenerator-runtime/runtime.js
+var require_runtime = __commonJS({
+  "node_modules/regenerator-runtime/runtime.js"(exports, module) {
+    var runtime = function(exports2) {
+      "use strict";
+      var Op = Object.prototype;
+      var hasOwn = Op.hasOwnProperty;
+      var undefined2;
+      var $Symbol = typeof Symbol === "function" ? Symbol : {};
+      var iteratorSymbol = $Symbol.iterator || "@@iterator";
+      var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+      var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+      function define2(obj, key, value) {
+        Object.defineProperty(obj, key, {
+          value,
+          enumerable: true,
+          configurable: true,
+          writable: true
+        });
+        return obj[key];
+      }
+      try {
+        define2({}, "");
+      } catch (err) {
+        define2 = function(obj, key, value) {
+          return obj[key] = value;
+        };
+      }
+      function wrap(innerFn, outerFn, self2, tryLocsList) {
+        var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+        var generator = Object.create(protoGenerator.prototype);
+        var context = new Context(tryLocsList || []);
+        generator._invoke = makeInvokeMethod(innerFn, self2, context);
+        return generator;
+      }
+      exports2.wrap = wrap;
+      function tryCatch(fn, obj, arg) {
+        try {
+          return {type: "normal", arg: fn.call(obj, arg)};
+        } catch (err) {
+          return {type: "throw", arg: err};
+        }
+      }
+      var GenStateSuspendedStart = "suspendedStart";
+      var GenStateSuspendedYield = "suspendedYield";
+      var GenStateExecuting = "executing";
+      var GenStateCompleted = "completed";
+      var ContinueSentinel = {};
+      function Generator() {
+      }
+      function GeneratorFunction() {
+      }
+      function GeneratorFunctionPrototype() {
+      }
+      var IteratorPrototype = {};
+      define2(IteratorPrototype, iteratorSymbol, function() {
+        return this;
+      });
+      var getProto = Object.getPrototypeOf;
+      var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+      if (NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+        IteratorPrototype = NativeIteratorPrototype;
+      }
+      var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
+      GeneratorFunction.prototype = GeneratorFunctionPrototype;
+      define2(Gp, "constructor", GeneratorFunctionPrototype);
+      define2(GeneratorFunctionPrototype, "constructor", GeneratorFunction);
+      GeneratorFunction.displayName = define2(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction");
+      function defineIteratorMethods(prototype) {
+        ["next", "throw", "return"].forEach(function(method) {
+          define2(prototype, method, function(arg) {
+            return this._invoke(method, arg);
+          });
+        });
+      }
+      exports2.isGeneratorFunction = function(genFun) {
+        var ctor = typeof genFun === "function" && genFun.constructor;
+        return ctor ? ctor === GeneratorFunction || (ctor.displayName || ctor.name) === "GeneratorFunction" : false;
+      };
+      exports2.mark = function(genFun) {
+        if (Object.setPrototypeOf) {
+          Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+        } else {
+          genFun.__proto__ = GeneratorFunctionPrototype;
+          define2(genFun, toStringTagSymbol, "GeneratorFunction");
+        }
+        genFun.prototype = Object.create(Gp);
+        return genFun;
+      };
+      exports2.awrap = function(arg) {
+        return {__await: arg};
+      };
+      function AsyncIterator(generator, PromiseImpl) {
+        function invoke(method, arg, resolve, reject) {
+          var record = tryCatch(generator[method], generator, arg);
+          if (record.type === "throw") {
+            reject(record.arg);
+          } else {
+            var result = record.arg;
+            var value = result.value;
+            if (value && typeof value === "object" && hasOwn.call(value, "__await")) {
+              return PromiseImpl.resolve(value.__await).then(function(value2) {
+                invoke("next", value2, resolve, reject);
+              }, function(err) {
+                invoke("throw", err, resolve, reject);
+              });
+            }
+            return PromiseImpl.resolve(value).then(function(unwrapped) {
+              result.value = unwrapped;
+              resolve(result);
+            }, function(error) {
+              return invoke("throw", error, resolve, reject);
+            });
+          }
+        }
+        var previousPromise;
+        function enqueue(method, arg) {
+          function callInvokeWithMethodAndArg() {
+            return new PromiseImpl(function(resolve, reject) {
+              invoke(method, arg, resolve, reject);
+            });
+          }
+          return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+        }
+        this._invoke = enqueue;
+      }
+      defineIteratorMethods(AsyncIterator.prototype);
+      define2(AsyncIterator.prototype, asyncIteratorSymbol, function() {
+        return this;
+      });
+      exports2.AsyncIterator = AsyncIterator;
+      exports2.async = function(innerFn, outerFn, self2, tryLocsList, PromiseImpl) {
+        if (PromiseImpl === void 0)
+          PromiseImpl = Promise;
+        var iter = new AsyncIterator(wrap(innerFn, outerFn, self2, tryLocsList), PromiseImpl);
+        return exports2.isGeneratorFunction(outerFn) ? iter : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+      };
+      function makeInvokeMethod(innerFn, self2, context) {
+        var state = GenStateSuspendedStart;
+        return function invoke(method, arg) {
+          if (state === GenStateExecuting) {
+            throw new Error("Generator is already running");
+          }
+          if (state === GenStateCompleted) {
+            if (method === "throw") {
+              throw arg;
+            }
+            return doneResult();
+          }
+          context.method = method;
+          context.arg = arg;
+          while (true) {
+            var delegate = context.delegate;
+            if (delegate) {
+              var delegateResult = maybeInvokeDelegate(delegate, context);
+              if (delegateResult) {
+                if (delegateResult === ContinueSentinel)
+                  continue;
+                return delegateResult;
+              }
+            }
+            if (context.method === "next") {
+              context.sent = context._sent = context.arg;
+            } else if (context.method === "throw") {
+              if (state === GenStateSuspendedStart) {
+                state = GenStateCompleted;
+                throw context.arg;
+              }
+              context.dispatchException(context.arg);
+            } else if (context.method === "return") {
+              context.abrupt("return", context.arg);
+            }
+            state = GenStateExecuting;
+            var record = tryCatch(innerFn, self2, context);
+            if (record.type === "normal") {
+              state = context.done ? GenStateCompleted : GenStateSuspendedYield;
+              if (record.arg === ContinueSentinel) {
+                continue;
+              }
+              return {
+                value: record.arg,
+                done: context.done
+              };
+            } else if (record.type === "throw") {
+              state = GenStateCompleted;
+              context.method = "throw";
+              context.arg = record.arg;
+            }
+          }
+        };
+      }
+      function maybeInvokeDelegate(delegate, context) {
+        var method = delegate.iterator[context.method];
+        if (method === undefined2) {
+          context.delegate = null;
+          if (context.method === "throw") {
+            if (delegate.iterator["return"]) {
+              context.method = "return";
+              context.arg = undefined2;
+              maybeInvokeDelegate(delegate, context);
+              if (context.method === "throw") {
+                return ContinueSentinel;
+              }
+            }
+            context.method = "throw";
+            context.arg = new TypeError("The iterator does not provide a 'throw' method");
+          }
+          return ContinueSentinel;
+        }
+        var record = tryCatch(method, delegate.iterator, context.arg);
+        if (record.type === "throw") {
+          context.method = "throw";
+          context.arg = record.arg;
+          context.delegate = null;
+          return ContinueSentinel;
+        }
+        var info = record.arg;
+        if (!info) {
+          context.method = "throw";
+          context.arg = new TypeError("iterator result is not an object");
+          context.delegate = null;
+          return ContinueSentinel;
+        }
+        if (info.done) {
+          context[delegate.resultName] = info.value;
+          context.next = delegate.nextLoc;
+          if (context.method !== "return") {
+            context.method = "next";
+            context.arg = undefined2;
+          }
+        } else {
+          return info;
+        }
+        context.delegate = null;
+        return ContinueSentinel;
+      }
+      defineIteratorMethods(Gp);
+      define2(Gp, toStringTagSymbol, "Generator");
+      define2(Gp, iteratorSymbol, function() {
+        return this;
+      });
+      define2(Gp, "toString", function() {
+        return "[object Generator]";
+      });
+      function pushTryEntry(locs) {
+        var entry = {tryLoc: locs[0]};
+        if (1 in locs) {
+          entry.catchLoc = locs[1];
+        }
+        if (2 in locs) {
+          entry.finallyLoc = locs[2];
+          entry.afterLoc = locs[3];
+        }
+        this.tryEntries.push(entry);
+      }
+      function resetTryEntry(entry) {
+        var record = entry.completion || {};
+        record.type = "normal";
+        delete record.arg;
+        entry.completion = record;
+      }
+      function Context(tryLocsList) {
+        this.tryEntries = [{tryLoc: "root"}];
+        tryLocsList.forEach(pushTryEntry, this);
+        this.reset(true);
+      }
+      exports2.keys = function(object) {
+        var keys = [];
+        for (var key in object) {
+          keys.push(key);
+        }
+        keys.reverse();
+        return function next() {
+          while (keys.length) {
+            var key2 = keys.pop();
+            if (key2 in object) {
+              next.value = key2;
+              next.done = false;
+              return next;
+            }
+          }
+          next.done = true;
+          return next;
+        };
+      };
+      function values(iterable) {
+        if (iterable) {
+          var iteratorMethod = iterable[iteratorSymbol];
+          if (iteratorMethod) {
+            return iteratorMethod.call(iterable);
+          }
+          if (typeof iterable.next === "function") {
+            return iterable;
+          }
+          if (!isNaN(iterable.length)) {
+            var i = -1, next = function next2() {
+              while (++i < iterable.length) {
+                if (hasOwn.call(iterable, i)) {
+                  next2.value = iterable[i];
+                  next2.done = false;
+                  return next2;
+                }
+              }
+              next2.value = undefined2;
+              next2.done = true;
+              return next2;
+            };
+            return next.next = next;
+          }
+        }
+        return {next: doneResult};
+      }
+      exports2.values = values;
+      function doneResult() {
+        return {value: undefined2, done: true};
+      }
+      Context.prototype = {
+        constructor: Context,
+        reset: function(skipTempReset) {
+          this.prev = 0;
+          this.next = 0;
+          this.sent = this._sent = undefined2;
+          this.done = false;
+          this.delegate = null;
+          this.method = "next";
+          this.arg = undefined2;
+          this.tryEntries.forEach(resetTryEntry);
+          if (!skipTempReset) {
+            for (var name in this) {
+              if (name.charAt(0) === "t" && hasOwn.call(this, name) && !isNaN(+name.slice(1))) {
+                this[name] = undefined2;
+              }
+            }
+          }
+        },
+        stop: function() {
+          this.done = true;
+          var rootEntry = this.tryEntries[0];
+          var rootRecord = rootEntry.completion;
+          if (rootRecord.type === "throw") {
+            throw rootRecord.arg;
+          }
+          return this.rval;
+        },
+        dispatchException: function(exception) {
+          if (this.done) {
+            throw exception;
+          }
+          var context = this;
+          function handle(loc, caught) {
+            record.type = "throw";
+            record.arg = exception;
+            context.next = loc;
+            if (caught) {
+              context.method = "next";
+              context.arg = undefined2;
+            }
+            return !!caught;
+          }
+          for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+            var entry = this.tryEntries[i];
+            var record = entry.completion;
+            if (entry.tryLoc === "root") {
+              return handle("end");
+            }
+            if (entry.tryLoc <= this.prev) {
+              var hasCatch = hasOwn.call(entry, "catchLoc");
+              var hasFinally = hasOwn.call(entry, "finallyLoc");
+              if (hasCatch && hasFinally) {
+                if (this.prev < entry.catchLoc) {
+                  return handle(entry.catchLoc, true);
+                } else if (this.prev < entry.finallyLoc) {
+                  return handle(entry.finallyLoc);
+                }
+              } else if (hasCatch) {
+                if (this.prev < entry.catchLoc) {
+                  return handle(entry.catchLoc, true);
+                }
+              } else if (hasFinally) {
+                if (this.prev < entry.finallyLoc) {
+                  return handle(entry.finallyLoc);
+                }
+              } else {
+                throw new Error("try statement without catch or finally");
+              }
+            }
+          }
+        },
+        abrupt: function(type, arg) {
+          for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+            var entry = this.tryEntries[i];
+            if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
+              var finallyEntry = entry;
+              break;
+            }
+          }
+          if (finallyEntry && (type === "break" || type === "continue") && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc) {
+            finallyEntry = null;
+          }
+          var record = finallyEntry ? finallyEntry.completion : {};
+          record.type = type;
+          record.arg = arg;
+          if (finallyEntry) {
+            this.method = "next";
+            this.next = finallyEntry.finallyLoc;
+            return ContinueSentinel;
+          }
+          return this.complete(record);
+        },
+        complete: function(record, afterLoc) {
+          if (record.type === "throw") {
+            throw record.arg;
+          }
+          if (record.type === "break" || record.type === "continue") {
+            this.next = record.arg;
+          } else if (record.type === "return") {
+            this.rval = this.arg = record.arg;
+            this.method = "return";
+            this.next = "end";
+          } else if (record.type === "normal" && afterLoc) {
+            this.next = afterLoc;
+          }
+          return ContinueSentinel;
+        },
+        finish: function(finallyLoc) {
+          for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+            var entry = this.tryEntries[i];
+            if (entry.finallyLoc === finallyLoc) {
+              this.complete(entry.completion, entry.afterLoc);
+              resetTryEntry(entry);
+              return ContinueSentinel;
+            }
+          }
+        },
+        "catch": function(tryLoc) {
+          for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+            var entry = this.tryEntries[i];
+            if (entry.tryLoc === tryLoc) {
+              var record = entry.completion;
+              if (record.type === "throw") {
+                var thrown = record.arg;
+                resetTryEntry(entry);
+              }
+              return thrown;
+            }
+          }
+          throw new Error("illegal catch attempt");
+        },
+        delegateYield: function(iterable, resultName, nextLoc) {
+          this.delegate = {
+            iterator: values(iterable),
+            resultName,
+            nextLoc
+          };
+          if (this.method === "next") {
+            this.arg = undefined2;
+          }
+          return ContinueSentinel;
+        }
+      };
+      return exports2;
+    }(typeof module === "object" ? module.exports : {});
+    try {
+      regeneratorRuntime = runtime;
+    } catch (accidentalStrictMode) {
+      if (typeof globalThis === "object") {
+        globalThis.regeneratorRuntime = runtime;
+      } else {
+        Function("r", "regeneratorRuntime = r")(runtime);
+      }
+    }
+  }
+});
+
 // admin/src/tab.tsx
-var import_react7 = __toModule(require_react());
+var import_react10 = __toModule(require_react());
 var import_react_dom = __toModule(require_react_dom());
 var import_react_error_boundary = __toModule(require_react_error_boundary_umd());
 var import_app = __toModule(require_app());
-var import_hooks3 = __toModule(require_hooks());
+var import_hooks6 = __toModule(require_hooks());
 
 // admin/src/components/TabPanel.tsx
 var import_Box = __toModule(require_Box());
@@ -8926,7 +9462,7 @@ var TabPanel = (props) => {
 };
 
 // admin/src/pages/AddNewDevices.tsx
-var import_react3 = __toModule(require_react());
+var import_react6 = __toModule(require_react());
 var import_iobroker_react = __toModule(require_build());
 
 // admin/src/components/Messages.tsx
@@ -8946,25 +9482,680 @@ var NotRunning = () => {
 };
 
 // admin/src/pages/AddNewDevices.tsx
-var AddNewDevices = (props) => {
+var import_Close = __toModule(require_Close2());
+
+// admin/src/lib/Config.ts
+var InitialConfig = {
+  deviceConfig: {
+    light: false,
+    addDeviceDeviceType: "",
+    configUrl: "",
+    name: "",
+    deviceType: "",
+    color: 0,
+    watchStateID: "",
+    deviceSensorResolution: "",
+    basicButton: "",
+    DeviceSensorColorClass: "",
+    DeviceSensorState: "",
+    DeviceSensorType: "",
+    DeviceSensorUsage: "",
+    DeviceSensorMax: "",
+    DeviceSensorMin: "",
+    DeviceSensorSIUnit: "",
+    DeviceSensorSymbol: "",
+    showCreateConfirmation: "",
+    manualDeviceId: "",
+    showSelectId: "",
+    selectIdValue: "",
+    basicDoorbell: "",
+    DeviceRGBLampPowerSwitch: "",
+    DeviceRGBLampColormode: "",
+    DeviceRGBLampDimmer: "",
+    DeviceRGBLampColortemp: "",
+    DeviceRGBLampHue: "",
+    DeviceRGBLampSaturation: "",
+    DeviceRGBLampRGB: "",
+    sensorList: "",
+    unitValue: "",
+    sensorMultiplier: ""
+  }
+};
+var Config = {
+  light: false,
+  configUrl: "",
+  name: "",
+  deviceType: "",
+  color: 0,
+  watchStateID: "",
+  addDeviceDeviceType: "",
+  basicButton: "",
+  DeviceSensorColorClass: "",
+  deviceSensorResolution: "",
+  DeviceSensorState: "",
+  DeviceSensorType: "",
+  DeviceSensorUsage: "",
+  DeviceSensorMax: "",
+  DeviceSensorMin: "",
+  DeviceSensorSIUnit: "",
+  DeviceSensorSymbol: "",
+  showCreateConfirmation: "",
+  manualDeviceId: "",
+  showSelectId: "",
+  selectIdValue: "",
+  basicDoorbell: "",
+  DeviceRGBLampPowerSwitch: "",
+  DeviceRGBLampColormode: "",
+  DeviceRGBLampDimmer: "",
+  DeviceRGBLampColortemp: "",
+  DeviceRGBLampHue: "",
+  DeviceRGBLampSaturation: "",
+  DeviceRGBLampRGB: "",
+  sensorList: "",
+  unitValue: "",
+  sensorMultiplier: ""
+};
+var clearConfig = () => {
+  Config = InitialConfig.deviceConfig;
+};
+
+// admin/src/options/DeviceTypeOptions.tsx
+var import_hooks4 = __toModule(require_hooks());
+var import_react5 = __toModule(require_react());
+
+// admin/src/options/ColorClassOption.tsx
+var import_hooks2 = __toModule(require_hooks());
+var import_react3 = __toModule(require_react());
+var colorClassOptions = [
+  {
+    label: "Select DS Color",
+    title: "selectcolor",
+    disabled: true
+  },
+  {
+    label: "1",
+    title: "yellowColorClass"
+  },
+  {
+    label: "2",
+    title: "greyColorClass"
+  },
+  {
+    label: "3",
+    title: "blueColorClass"
+  },
+  {
+    label: "4",
+    title: "cyanColorClass"
+  },
+  {
+    label: "5",
+    title: "magentaColorClass"
+  },
+  {
+    label: "6",
+    title: "redColorClass"
+  },
+  {
+    label: "7",
+    title: "greenColorClass"
+  },
+  {
+    label: "8",
+    title: "blackColorClass"
+  },
+  {
+    label: "9",
+    title: "whiteColorClass"
+  }
+];
+var SelectColorClassOptions = () => {
+  const {translate: _} = (0, import_hooks2.useI18n)();
+  const [colorOptions, setColorGlassOptions] = (0, import_react3.useState)("selectcolor");
+  const handleColorClassOptions = (event) => {
+    setColorGlassOptions(event.target.value);
+    console.log(typeof event.target.value);
+    Config.color = JSON.parse(event.target.value);
+  };
+  const ColorClassSelect = () => {
+    const menuItem = [];
+    for (const key in colorClassOptions) {
+      menuItem.push(/* @__PURE__ */ import_react3.default.createElement(MenuItem_default, {
+        disabled: colorClassOptions[key].disabled,
+        key: key + colorClassOptions[key].title,
+        value: colorClassOptions[key].label
+      }, `${_(colorClassOptions[key].title)}`));
+    }
+    return menuItem;
+  };
+  return /* @__PURE__ */ import_react3.default.createElement(import_react3.default.Fragment, null, /* @__PURE__ */ import_react3.default.createElement(import_react3.default.Fragment, null, /* @__PURE__ */ import_react3.default.createElement(Box_default, {
+    sx: {minWidth: 120, maxWidth: 300, width: "250px"}
+  }, /* @__PURE__ */ import_react3.default.createElement(FormControl_default, null, /* @__PURE__ */ import_react3.default.createElement(InputLabel_default, {
+    id: "ColorClass-select-label"
+  }, _("select Color Class")), /* @__PURE__ */ import_react3.default.createElement(Select_default, {
+    labelId: "ColorClass-select-label",
+    id: "ColorClass",
+    value: colorOptions,
+    label: "select Color Class",
+    onChange: handleColorClassOptions,
+    sx: {width: 250}
+  }, ColorClassSelect())))));
+};
+
+// admin/src/options/DefineConfigURL.tsx
+var React4 = __toModule(require_react());
+function DefineConfigURL() {
+  const [name, setName] = React4.useState("http://localhost:8081");
+  const handleChange = (event) => {
+    setName(event.target.value);
+    console.log(event.target.value);
+    Config.configUrl = event.target.value;
+  };
+  return /* @__PURE__ */ React4.createElement(Box_default, {
+    component: "form",
+    sx: {
+      "& > :not(style)": {m: 1, width: "25ch"}
+    },
+    noValidate: true,
+    autoComplete: "off"
+  }, /* @__PURE__ */ React4.createElement(TextField_default, {
+    id: "outlined-name",
+    label: "ConfigURL",
+    value: name,
+    onChange: handleChange
+  }));
+}
+
+// admin/src/options/DefineName.tsx
+var React5 = __toModule(require_react());
+function DefineName() {
+  const [name, setName] = React5.useState("VDC DeviceName");
+  const handleChange = (event) => {
+    setName(event.target.value);
+    console.log(event.target.value);
+    Config.name = event.target.value;
+  };
+  return /* @__PURE__ */ React5.createElement(Box_default, {
+    component: "form",
+    sx: {
+      "& > :not(style)": {m: 1, width: "25ch"}
+    },
+    noValidate: true,
+    autoComplete: "off"
+  }, /* @__PURE__ */ React5.createElement(TextField_default, {
+    id: "outlined-name",
+    label: "Name",
+    value: name,
+    onChange: handleChange
+  }));
+}
+
+// node_modules/@material-ui/icons/esm/utils/createSvgIcon.js
+var import_utils = __toModule(require_utils());
+
+// node_modules/@material-ui/icons/esm/Info.js
+var React6 = __toModule(require_react());
+var Info_default = (0, import_utils.createSvgIcon)(/* @__PURE__ */ React6.createElement("path", {
+  d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+}), "Info");
+
+// admin/src/options/DefineResolution.tsx
+var React7 = __toModule(require_react());
+function DefineResolution() {
+  const [name, setName] = React7.useState("");
+  const handleChange = (event) => {
+    setName(event.target.value);
+    console.log(event.target.value);
+    Config.deviceSensorResolution = event.target.value;
+  };
+  return /* @__PURE__ */ React7.createElement(Box_default, {
+    component: "form",
+    sx: {
+      "& > :not(style)": {m: 1, width: "25ch"}
+    },
+    noValidate: true,
+    autoComplete: "off"
+  }, /* @__PURE__ */ React7.createElement(TextField_default, {
+    id: "outlined-name",
+    label: "Resolution",
+    value: name,
+    onChange: handleChange
+  }), /* @__PURE__ */ React7.createElement(Tooltip_default, {
+    title: "tooltipResolution"
+  }, /* @__PURE__ */ React7.createElement(IconButton_default, null, /* @__PURE__ */ React7.createElement(Info_default, null))));
+}
+
+// admin/src/options/LightOptions.tsx
+var import_hooks3 = __toModule(require_hooks());
+var import_react4 = __toModule(require_react());
+var outputLightOptions = [
+  {
+    label: "Select Light Option",
+    title: "selectlight",
+    disabled: true
+  },
+  {
+    label: "basic",
+    title: "outputLightBasic"
+  },
+  {
+    label: "colorlight",
+    title: "outputLightColorlight"
+  },
+  {
+    label: "ctlight",
+    title: "outputLightCTLight"
+  }
+];
+var SelectLightOptions = () => {
+  const {translate: _} = (0, import_hooks3.useI18n)();
+  const [lightOptions, setOutputLightOptions] = (0, import_react4.useState)("selectlight");
+  const handleChangeLightOptions = (event) => {
+    setOutputLightOptions(event.target.value);
+    console.log(event.target.value);
+  };
+  const LightOptionsSelect = () => {
+    const menuItem = [];
+    for (const key in outputLightOptions) {
+      menuItem.push(/* @__PURE__ */ import_react4.default.createElement(MenuItem_default, {
+        disabled: outputLightOptions[key].disabled,
+        key: key + outputLightOptions[key].label,
+        value: outputLightOptions[key].title
+      }, `${_(outputLightOptions[key].label)}`));
+    }
+    return menuItem;
+  };
+  return /* @__PURE__ */ import_react4.default.createElement(import_react4.default.Fragment, null, /* @__PURE__ */ import_react4.default.createElement(import_react4.default.Fragment, null, /* @__PURE__ */ import_react4.default.createElement(Box_default, {
+    sx: {minWidth: 120, maxWidth: 300, width: "250px"}
+  }, /* @__PURE__ */ import_react4.default.createElement(FormControl_default, null, /* @__PURE__ */ import_react4.default.createElement(InputLabel_default, {
+    id: "LightOptions-select-label"
+  }, _("select Light Option")), /* @__PURE__ */ import_react4.default.createElement(Select_default, {
+    labelId: "LightOptions-select-label",
+    id: "LightOptions",
+    value: lightOptions,
+    label: "select Light Option",
+    onChange: handleChangeLightOptions,
+    sx: {width: 250}
+  }, LightOptionsSelect())))));
+};
+
+// admin/src/options/DeviceTypeOptions.tsx
+var deviceTypeOptions = [
+  {
+    label: "Select Device type",
+    title: "selectDevice",
+    disabled: true
+  },
+  {
+    label: "lamp",
+    title: "deviceTypeOptionsLamp"
+  },
+  {
+    label: "rgbLamp",
+    title: "deviceTypeOptionsRGBLamp"
+  },
+  {
+    label: "sensor",
+    title: "deviceTypeOptionsSensor"
+  },
+  {
+    label: "presenceSensor",
+    title: "deviceTypeOptionsMotionDetection"
+  },
+  {
+    label: "smokeAlarm",
+    title: "deviceTypeOptionsSmokeAlarm"
+  },
+  {
+    label: "button",
+    title: "deviceTypeOptionsButton"
+  },
+  {
+    label: "doorbell",
+    title: "deviceTypeOptionsDoorbell"
+  },
+  {
+    label: "multiSensor",
+    title: "deviceTypeOptionsMultiSensor"
+  },
+  {
+    label: "awayButton",
+    title: "deviceTypeOptionsAwayButton"
+  }
+];
+var SelectDeviceType = () => {
+  const {translate: _} = (0, import_hooks4.useI18n)();
+  const [devicetype, sethandleDeviceType] = (0, import_react5.useState)("selectDevice");
+  const handleDeviceType = (event) => {
+    console.log(Config);
+    sethandleDeviceType(event.target.value);
+  };
+  const deviceTypeSelect = () => {
+    const menuItem = [];
+    for (const key in deviceTypeOptions) {
+      menuItem.push(/* @__PURE__ */ import_react5.default.createElement(MenuItem_default, {
+        disabled: deviceTypeOptions[key].disabled,
+        key: key + deviceTypeOptions[key].label,
+        value: deviceTypeOptions[key].title
+      }, `${_(deviceTypeOptions[key].label)}`));
+    }
+    return menuItem;
+  };
+  return /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(Box_default, {
+    sx: {minWidth: 120, maxWidth: 300, width: "250px"}
+  }, /* @__PURE__ */ import_react5.default.createElement(FormControl_default, null, /* @__PURE__ */ import_react5.default.createElement(InputLabel_default, {
+    id: "DeviceType-select-label"
+  }, _("Select Device type")), /* @__PURE__ */ import_react5.default.createElement(Select_default, {
+    labelId: "DeviceType-select-label",
+    id: "DeviceType",
+    value: devicetype,
+    label: "select device Type",
+    onChange: handleDeviceType,
+    sx: {width: 250}
+  }, deviceTypeSelect()))))), devicetype === "deviceTypeOptionsLamp" ? /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(DefineName, null), /* @__PURE__ */ import_react5.default.createElement(DefineConfigURL, null))), /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(TextField_default, {
+    id: "outlined-basic",
+    label: "Select ID Placeholder",
+    variant: "outlined"
+  }))) : null, devicetype === "deviceTypeOptionsRGBLamp" ? /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(SelectLightOptions, null), /* @__PURE__ */ import_react5.default.createElement(SelectColorClassOptions, null), /* @__PURE__ */ import_react5.default.createElement(DefineName, null), /* @__PURE__ */ import_react5.default.createElement(DefineConfigURL, null))), /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(SelectLightOptions, null), /* @__PURE__ */ import_react5.default.createElement(SelectColorClassOptions, null))) : null, devicetype === "deviceTypeOptionsSensor" ? /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(DefineName, null), /* @__PURE__ */ import_react5.default.createElement(DefineConfigURL, null), /* @__PURE__ */ import_react5.default.createElement(SelectColorClassOptions, null))), /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(DefineResolution, null), /* @__PURE__ */ import_react5.default.createElement("h1", null, "test1"))) : null, devicetype === "deviceTypeOptionsMotionDetection" ? /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(DefineName, null), /* @__PURE__ */ import_react5.default.createElement(DefineConfigURL, null))), /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement("h1", null, "test1"))) : null, devicetype === "deviceTypeOptionsSmokeAlarm" ? /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(DefineName, null), /* @__PURE__ */ import_react5.default.createElement(DefineConfigURL, null))), /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement("h1", null, "test1"))) : null, devicetype === "deviceTypeOptionsButton" ? /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(DefineName, null), /* @__PURE__ */ import_react5.default.createElement(DefineConfigURL, null))), /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement("h1", null, "test1"))) : null, devicetype === "deviceTypeOptionsDoorbell" ? /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(DefineName, null), /* @__PURE__ */ import_react5.default.createElement(DefineConfigURL, null))), /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement("h1", null, "test1"))) : null, devicetype === "deviceTypeOptionsMultiSensor" ? /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(DefineName, null), /* @__PURE__ */ import_react5.default.createElement(DefineConfigURL, null)), /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement("h1", null, "test2"), /* @__PURE__ */ import_react5.default.createElement("h1", null, "test2"))) : null, devicetype === "deviceTypeOptionsAwayButton" ? /* @__PURE__ */ import_react5.default.createElement(import_react5.default.Fragment, null, /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement(DefineName, null), /* @__PURE__ */ import_react5.default.createElement(DefineConfigURL, null)), /* @__PURE__ */ import_react5.default.createElement(Grid_default, {
+    container: true,
+    spacing: 1,
+    sx: {
+      marginTop: "10px",
+      paddingBottom: "15px",
+      alignItems: "center",
+      justifyContent: "space-around",
+      display: "flex",
+      flexWrap: "wrap",
+      flexDirection: "row"
+    }
+  }, /* @__PURE__ */ import_react5.default.createElement("h1", null, "test2"), /* @__PURE__ */ import_react5.default.createElement("h1", null, "test2"))) : null);
+};
+
+// admin/src/pages/AddNewDevices.tsx
+var AddNewDevices = ({devices}) => {
+  const [open, setOpen] = import_react6.default.useState(false);
   const {alive: adapterRunning, connected: driverReady} = (0, import_iobroker_react.useAdapter)();
   if (!adapterRunning || !driverReady)
-    return /* @__PURE__ */ import_react3.default.createElement(NotRunning, null);
-  return /* @__PURE__ */ import_react3.default.createElement("div", {
-    id: "AddNewDevices"
-  }, "AddNewDevice");
+    return /* @__PURE__ */ import_react6.default.createElement(NotRunning, null);
+  const BootstrapDialog = styled_default(Dialog_default)(({theme}) => ({
+    "& .MuiDialogContent-root": {
+      padding: theme.spacing(2)
+    },
+    "& .MuiDialogActions-root": {
+      padding: theme.spacing(1)
+    }
+  }));
+  const BootstrapDialogTitle = (props) => {
+    const {children, onClose, ...other} = props;
+    return /* @__PURE__ */ import_react6.default.createElement(DialogTitle_default, {
+      sx: {m: 0, p: 2},
+      ...other
+    }, children, onClose ? /* @__PURE__ */ import_react6.default.createElement(IconButton_default, {
+      "aria-label": "close",
+      onClick: onClose,
+      sx: {
+        position: "absolute",
+        right: 8,
+        top: 8,
+        color: (theme) => theme.palette.grey[500]
+      }
+    }, /* @__PURE__ */ import_react6.default.createElement(import_Close.default, null)) : null);
+  };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+    clearConfig();
+  };
+  return /* @__PURE__ */ import_react6.default.createElement("div", null, /* @__PURE__ */ import_react6.default.createElement(Button_default, {
+    variant: "outlined",
+    onClick: handleClickOpen
+  }, "Add new Device"), /* @__PURE__ */ import_react6.default.createElement(BootstrapDialog, {
+    onClose: handleClose,
+    "aria-labelledby": "customized-dialog-title",
+    open
+  }, /* @__PURE__ */ import_react6.default.createElement(BootstrapDialogTitle, {
+    id: "customized-dialog-title",
+    onClose: handleClose
+  }, "Add Device"), /* @__PURE__ */ import_react6.default.createElement(DialogContent_default, {
+    dividers: true
+  }, /* @__PURE__ */ import_react6.default.createElement(SelectDeviceType, null)), /* @__PURE__ */ import_react6.default.createElement(DialogActions_default, null, /* @__PURE__ */ import_react6.default.createElement(Button_default, {
+    autoFocus: true,
+    onClick: handleClose
+  }, "Save changes"))));
 };
 
 // admin/src/pages/ListDevices.tsx
-var import_react5 = __toModule(require_react());
+var import_react8 = __toModule(require_react());
 var import_iobroker_react2 = __toModule(require_build());
-var import_hooks2 = __toModule(require_hooks());
+var import_hooks5 = __toModule(require_hooks());
 
 // admin/src/components/SelectID.tsx
-var import_react4 = __toModule(require_react());
+var import_react7 = __toModule(require_react());
 var import_SelectID = __toModule(require_SelectID());
 
+// node_modules/@mui/styles/index.js
+var import_utils7 = __toModule(require_utils2());
+
 // node_modules/@mui/styles/createGenerateClassName/createGenerateClassName.js
+var import_ThemeProvider = __toModule(require_ThemeProvider());
 var stateClasses = ["checked", "disabled", "error", "focused", "focusVisible", "required", "expanded", "selected"];
 function createGenerateClassName(options = {}) {
   const {
@@ -8990,7 +10181,7 @@ function createGenerateClassName(options = {}) {
         return `Mui-${rule.key}`;
       }
       const prefix = `${seedPrefix}${name}-${rule.key}`;
-      if (!styleSheet.options.theme[nested_default] || seed !== "") {
+      if (!styleSheet.options.theme[import_ThemeProvider.unstable_nested] || seed !== "") {
         return prefix;
       }
       return `${prefix}-${getNextCounterId()}`;
@@ -10738,10 +11929,10 @@ function jssNested() {
     for (var i = 0; i < parentSelectors.length; i++) {
       var parent = parentSelectors[i];
       for (var j = 0; j < nestedSelectors.length; j++) {
-        var nested = nestedSelectors[j];
+        var nested2 = nestedSelectors[j];
         if (result)
           result += ", ";
-        result += nested.indexOf("&") !== -1 ? nested.replace(parentRegExp, parent) : parent + " " + nested;
+        result += nested2.indexOf("&") !== -1 ? nested2.replace(parentRegExp, parent) : parent + " " + nested2;
       }
     }
     return result;
@@ -11130,9 +12321,10 @@ function jssPreset() {
 }
 
 // node_modules/@mui/styles/makeStyles/makeStyles.js
-var React5 = __toModule(require_react());
+var React12 = __toModule(require_react());
 
 // node_modules/@mui/styles/mergeClasses/mergeClasses.js
+var import_utils2 = __toModule(require_utils2());
 function mergeClasses(options = {}) {
   const {
     baseClasses,
@@ -11145,17 +12337,17 @@ function mergeClasses(options = {}) {
   const nextClasses = _extends({}, baseClasses);
   if (true) {
     if (typeof newClasses === "string") {
-      console.error([`MUI: The value \`${newClasses}\` provided to the classes prop of ${getDisplayName(Component)} is incorrect.`, "You might want to use the className prop instead."].join("\n"));
+      console.error([`MUI: The value \`${newClasses}\` provided to the classes prop of ${(0, import_utils2.getDisplayName)(Component)} is incorrect.`, "You might want to use the className prop instead."].join("\n"));
       return baseClasses;
     }
   }
   Object.keys(newClasses).forEach((key) => {
     if (true) {
       if (!baseClasses[key] && newClasses[key]) {
-        console.error([`MUI: The key \`${key}\` provided to the classes prop is not implemented in ${getDisplayName(Component)}.`, `You can only override one of the following: ${Object.keys(baseClasses).join(",")}.`].join("\n"));
+        console.error([`MUI: The key \`${key}\` provided to the classes prop is not implemented in ${(0, import_utils2.getDisplayName)(Component)}.`, `You can only override one of the following: ${Object.keys(baseClasses).join(",")}.`].join("\n"));
       }
       if (newClasses[key] && typeof newClasses[key] !== "string") {
-        console.error([`MUI: The key \`${key}\` provided to the classes prop is not valid for ${getDisplayName(Component)}.`, `You need to provide a non empty string instead of: ${newClasses[key]}.`].join("\n"));
+        console.error([`MUI: The key \`${key}\` provided to the classes prop is not valid for ${(0, import_utils2.getDisplayName)(Component)}.`, `You need to provide a non empty string instead of: ${newClasses[key]}.`].join("\n"));
       }
     }
     if (newClasses[key]) {
@@ -11186,9 +12378,13 @@ var multiKeyStore = {
 };
 var multiKeyStore_default = multiKeyStore;
 
+// node_modules/@mui/styles/useTheme/index.js
+var import_useTheme = __toModule(require_useTheme());
+
 // node_modules/@mui/styles/StylesProvider/StylesProvider.js
-var React4 = __toModule(require_react());
+var React11 = __toModule(require_react());
 var import_prop_types = __toModule(require_prop_types());
+var import_utils3 = __toModule(require_utils2());
 var import_jsx_runtime = __toModule(require_jsx_runtime());
 var _excluded = ["children", "injectFirst", "disableGeneration"];
 var jss = createJss(jssPreset());
@@ -11202,7 +12398,7 @@ var defaultOptions = {
   sheetsManager,
   sheetsRegistry: null
 };
-var StylesContext = /* @__PURE__ */ React4.createContext(defaultOptions);
+var StylesContext = /* @__PURE__ */ React11.createContext(defaultOptions);
 if (true) {
   StylesContext.displayName = "StylesContext";
 }
@@ -11213,7 +12409,7 @@ function StylesProvider(props) {
     injectFirst = false,
     disableGeneration = false
   } = props, localOptions = _objectWithoutPropertiesLoose(props, _excluded);
-  const outerOptions = React4.useContext(StylesContext);
+  const outerOptions = React11.useContext(StylesContext);
   const context = _extends({}, outerOptions, {
     disableGeneration
   }, localOptions);
@@ -11260,7 +12456,7 @@ true ? StylesProvider.propTypes = {
   sheetsRegistry: import_prop_types.default.object
 } : void 0;
 if (true) {
-  true ? StylesProvider.propTypes = exactProp(StylesProvider.propTypes) : void 0;
+  true ? StylesProvider.propTypes = (0, import_utils3.exactProp)(StylesProvider.propTypes) : void 0;
 }
 
 // node_modules/@mui/styles/makeStyles/indexCounter.js
@@ -11275,7 +12471,11 @@ function increment() {
   return indexCounter;
 }
 
+// node_modules/@mui/styles/getStylesCreator/getStylesCreator.js
+var import_utils5 = __toModule(require_utils2());
+
 // node_modules/@mui/styles/propsToClassKey/propsToClassKey.js
+var import_utils4 = __toModule(require_utils2());
 var _excluded2 = ["variant"];
 function isEmpty(string) {
   return string.length === 0;
@@ -11287,9 +12487,9 @@ function propsToClassKey(props) {
   let classKey = variant || "";
   Object.keys(other).sort().forEach((key) => {
     if (key === "color") {
-      classKey += isEmpty(classKey) ? props[key] : capitalize(props[key]);
+      classKey += isEmpty(classKey) ? props[key] : (0, import_utils4.unstable_capitalize)(props[key]);
     } else {
-      classKey += `${isEmpty(classKey) ? key : capitalize(key)}${capitalize(props[key].toString())}`;
+      classKey += `${isEmpty(classKey) ? key : (0, import_utils4.unstable_capitalize)(key)}${(0, import_utils4.unstable_capitalize)(props[key].toString())}`;
     }
   });
   return classKey;
@@ -11332,11 +12532,11 @@ function getStylesCreator(stylesOrCreator) {
             console.warn(["MUI: You are trying to override a style that does not exist.", `Fix the \`${key}\` key of \`theme.components.${name}.styleOverrides\`.`, "", `If you intentionally wanted to add a new key, please use the theme.components[${name}].variants option.`].join("\n"));
           }
         }
-        stylesWithOverrides[key] = deepmerge(stylesWithOverrides[key] || {}, overrides[key]);
+        stylesWithOverrides[key] = (0, import_utils5.deepmerge)(stylesWithOverrides[key] || {}, overrides[key]);
       });
       variants.forEach((definition) => {
         const classKey = propsToClassKey(definition.props);
-        stylesWithOverrides[classKey] = deepmerge(stylesWithOverrides[classKey] || {}, definition.style);
+        stylesWithOverrides[classKey] = (0, import_utils5.deepmerge)(stylesWithOverrides[classKey] || {}, definition.style);
       });
       return stylesWithOverrides;
     },
@@ -11477,14 +12677,14 @@ function detach({
   }
 }
 function useSynchronousEffect(func, values) {
-  const key = React5.useRef([]);
+  const key = React12.useRef([]);
   let output;
-  const currentKey = React5.useMemo(() => ({}), values);
+  const currentKey = React12.useMemo(() => ({}), values);
   if (key.current !== currentKey) {
     key.current = currentKey;
     output = func();
   }
-  React5.useEffect(() => () => {
+  React12.useEffect(() => () => {
     if (output) {
       output();
     }
@@ -11506,10 +12706,10 @@ function makeStyles2(stylesOrCreator, options = {}) {
     classNamePrefix
   };
   const useStyles2 = (props = {}) => {
-    const theme = useTheme() || defaultTheme;
-    const stylesOptions = _extends({}, React5.useContext(StylesContext), stylesOptions2);
-    const instance = React5.useRef();
-    const shouldUpdate = React5.useRef();
+    const theme = (0, import_useTheme.default)() || defaultTheme;
+    const stylesOptions = _extends({}, React12.useContext(StylesContext), stylesOptions2);
+    const instance = React12.useRef();
+    const shouldUpdate = React12.useRef();
     useSynchronousEffect(() => {
       const current = {
         name,
@@ -11525,7 +12725,7 @@ function makeStyles2(stylesOrCreator, options = {}) {
         detach(current);
       };
     }, [theme, stylesCreator]);
-    React5.useEffect(() => {
+    React12.useEffect(() => {
       if (shouldUpdate.current) {
         update(instance.current, props);
       }
@@ -11533,7 +12733,7 @@ function makeStyles2(stylesOrCreator, options = {}) {
     });
     const classes = getClasses(instance.current, props.classes, Component);
     if (true) {
-      React5.useDebugValue(classes);
+      React12.useDebugValue(classes);
     }
     if (true) {
       const supportedComponents = ["MuiAvatar", "MuiBadge", "MuiButton", "MuiButtonGroup", "MuiChip", "MuiDivider", "MuiFab", "MuiPaper", "MuiToolbar", "MuiTypography", "MuiAlert", "MuiPagination", "MuiPaginationItem", "MuiSkeleton", "MuiTimelineDot"];
@@ -11547,9 +12747,10 @@ function makeStyles2(stylesOrCreator, options = {}) {
 }
 
 // node_modules/@mui/styles/withStyles/withStyles.js
-var React6 = __toModule(require_react());
+var React13 = __toModule(require_react());
 var import_prop_types2 = __toModule(require_prop_types());
 var import_hoist_non_react_statics = __toModule(require_hoist_non_react_statics_cjs());
+var import_utils6 = __toModule(require_utils2());
 var import_jsx_runtime2 = __toModule(require_jsx_runtime());
 var _excluded4 = ["defaultTheme", "withTheme", "name"];
 var _excluded22 = ["classes"];
@@ -11567,7 +12768,7 @@ var withStyles = (stylesOrCreator, options = {}) => (Component) => {
   let classNamePrefix = name;
   if (true) {
     if (!name) {
-      const displayName = getDisplayName(Component);
+      const displayName = (0, import_utils6.getDisplayName)(Component);
       if (displayName !== void 0) {
         classNamePrefix = displayName;
       }
@@ -11579,13 +12780,13 @@ var withStyles = (stylesOrCreator, options = {}) => (Component) => {
     name: name || Component.displayName,
     classNamePrefix
   }, stylesOptions));
-  const WithStyles = /* @__PURE__ */ React6.forwardRef(function WithStyles2(props, ref) {
+  const WithStyles = /* @__PURE__ */ React13.forwardRef(function WithStyles2(props, ref) {
     const other = _objectWithoutPropertiesLoose(props, _excluded22);
     const classes = useStyles2(_extends({}, Component.defaultProps, props));
     let theme;
     let more = other;
     if (typeof name === "string" || withTheme) {
-      theme = useTheme() || defaultTheme;
+      theme = (0, import_useTheme.default)() || defaultTheme;
       if (name) {
         more = getThemeProps({
           theme,
@@ -11606,7 +12807,7 @@ var withStyles = (stylesOrCreator, options = {}) => (Component) => {
     classes: import_prop_types2.default.object
   } : void 0;
   if (true) {
-    WithStyles.displayName = `WithStyles(${getDisplayName(Component)})`;
+    WithStyles.displayName = `WithStyles(${(0, import_utils6.getDisplayName)(Component)})`;
   }
   (0, import_hoist_non_react_statics.default)(WithStyles, Component);
   if (true) {
@@ -11620,16 +12821,17 @@ var withStyles_default = withStyles;
 
 // node_modules/@mui/styles/index.js
 if (typeof window !== "undefined") {
-  ponyfillGlobal_default["__@mui/styles-init__"] = ponyfillGlobal_default["__@mui/styles-init__"] || 0;
-  if (ponyfillGlobal_default["__@mui/styles-init__"] === 1) {
+  import_utils7.ponyfillGlobal["__@mui/styles-init__"] = import_utils7.ponyfillGlobal["__@mui/styles-init__"] || 0;
+  if (import_utils7.ponyfillGlobal["__@mui/styles-init__"] === 1) {
     console.warn(["It looks like there are several instances of `@mui/styles` initialized in this application.", "This may cause theme propagation issues, broken class names, specificity issues, and makes your application bigger without a good reason.", "", "See https://mui.com/r/styles-instance-warning for more info."].join("\n"));
   }
-  ponyfillGlobal_default["__@mui/styles-init__"] += 1;
+  import_utils7.ponyfillGlobal["__@mui/styles-init__"] += 1;
 }
 
 // admin/src/components/SelectID.tsx
+var import_runtime = __toModule(require_runtime());
 var styles = () => ({});
-var SelectID = class extends import_react4.default.Component {
+var SelectID = class extends import_react7.default.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11641,7 +12843,7 @@ var SelectID = class extends import_react4.default.Component {
   render() {
     console.log(this.state.showSelectId);
     if (this.state.showSelectId) {
-      return /* @__PURE__ */ import_react4.default.createElement("div", null, /* @__PURE__ */ import_react4.default.createElement("div", null, "Gugus!!!"), /* @__PURE__ */ import_react4.default.createElement(import_SelectID.default, {
+      return /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement("div", null, "Gugus!!!"), /* @__PURE__ */ import_react7.default.createElement(import_SelectID.default, {
         key: "tableSelect",
         imagePrefix: "../..",
         dialogName: this.props.dialogName,
@@ -11658,7 +12860,7 @@ var SelectID = class extends import_react4.default.Component {
         }
       }));
     } else {
-      return /* @__PURE__ */ import_react4.default.createElement("div", null, "not showing!");
+      return /* @__PURE__ */ import_react7.default.createElement("div", null, "not showing!");
     }
   }
 };
@@ -11669,7 +12871,7 @@ var showSelectId = (dialogName, connection, setSelectIdValue, triggerSelectId) =
   console.log("showSelectId", SelectID_default);
   if (!triggerSelectId)
     return;
-  return /* @__PURE__ */ import_react5.default.createElement(SelectID_default, {
+  return /* @__PURE__ */ import_react8.default.createElement(SelectID_default, {
     dialogName,
     themeType: "dark",
     socket: connection,
@@ -11678,12 +12880,12 @@ var showSelectId = (dialogName, connection, setSelectIdValue, triggerSelectId) =
 };
 var ListDevices = (props) => {
   const {alive: adapterRunning, connected: driverReady} = (0, import_iobroker_react2.useAdapter)();
-  const connection = (0, import_hooks2.useConnection)();
-  const [triggerSelectId, setTriggerSelectId] = import_react5.default.useState(false);
-  const [selectIdValue, setSelectIdValue] = import_react5.default.useState();
-  return /* @__PURE__ */ import_react5.default.createElement("div", {
+  const connection = (0, import_hooks5.useConnection)();
+  const [triggerSelectId, setTriggerSelectId] = import_react8.default.useState(false);
+  const [selectIdValue, setSelectIdValue] = import_react8.default.useState();
+  return /* @__PURE__ */ import_react8.default.createElement("div", {
     id: "ListDevices"
-  }, showSelectId("test", connection, setSelectIdValue, triggerSelectId), ";", /* @__PURE__ */ import_react5.default.createElement(Button_default, {
+  }, showSelectId("test", connection, setSelectIdValue, triggerSelectId), /* @__PURE__ */ import_react8.default.createElement(Button_default, {
     onClick: () => {
       {
         console.log("click to open selectID");
@@ -11695,14 +12897,14 @@ var ListDevices = (props) => {
 };
 
 // admin/src/lib/useDevices.ts
-var import_react6 = __toModule(require_react());
-var DevicesContext = import_react6.default.createContext({
+var import_react9 = __toModule(require_react());
+var DevicesContext = import_react9.default.createContext({
   devices: {},
   async updateDevices() {
   }
 });
 function useDevices() {
-  const [devices, setDevices] = import_react6.default.useState();
+  const [devices, setDevices] = import_react9.default.useState();
   async function updateDevices() {
   }
   return [devices, updateDevices];
@@ -11722,46 +12924,46 @@ var translations = {
   "zh-cn": require_zh_cn()
 };
 function ErrorFallback({error, resetErrorBoundary}) {
-  return /* @__PURE__ */ import_react7.default.createElement("div", {
+  return /* @__PURE__ */ import_react10.default.createElement("div", {
     role: "alert"
-  }, /* @__PURE__ */ import_react7.default.createElement("p", null, "Something went wrong:"), /* @__PURE__ */ import_react7.default.createElement("pre", null, error.stack), /* @__PURE__ */ import_react7.default.createElement("button", {
+  }, /* @__PURE__ */ import_react10.default.createElement("p", null, "Something went wrong:"), /* @__PURE__ */ import_react10.default.createElement("pre", null, error.stack), /* @__PURE__ */ import_react10.default.createElement("button", {
     onClick: resetErrorBoundary
   }, "Try again"));
 }
 var Root = () => {
-  const [value, setValue] = import_react7.default.useState(0);
-  const {translate: _} = (0, import_hooks3.useI18n)();
+  const [value, setValue] = import_react10.default.useState(0);
+  const {translate: _} = (0, import_hooks6.useI18n)();
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
   };
   const [devices, updateDevices] = useDevices();
-  return /* @__PURE__ */ import_react7.default.createElement("div", null, /* @__PURE__ */ import_react7.default.createElement(Tabs_default, {
+  return /* @__PURE__ */ import_react10.default.createElement("div", null, /* @__PURE__ */ import_react10.default.createElement(Tabs_default, {
     value,
     onChange: handleTabChange
-  }, /* @__PURE__ */ import_react7.default.createElement(Tab_default, {
+  }, /* @__PURE__ */ import_react10.default.createElement(Tab_default, {
     label: _("tabListDevices")
-  }), /* @__PURE__ */ import_react7.default.createElement(Tab_default, {
+  }), /* @__PURE__ */ import_react10.default.createElement(Tab_default, {
     label: _("tabAddNewDevices")
-  })), /* @__PURE__ */ import_react7.default.createElement(TabPanel, {
+  })), /* @__PURE__ */ import_react10.default.createElement(TabPanel, {
     value,
     index: 0
-  }, /* @__PURE__ */ import_react7.default.createElement(import_react_error_boundary.ErrorBoundary, {
+  }, /* @__PURE__ */ import_react10.default.createElement(import_react_error_boundary.ErrorBoundary, {
     FallbackComponent: ErrorFallback
-  }, /* @__PURE__ */ import_react7.default.createElement(ListDevices, {
+  }, /* @__PURE__ */ import_react10.default.createElement(ListDevices, {
     devices
-  }))), /* @__PURE__ */ import_react7.default.createElement(TabPanel, {
+  }))), /* @__PURE__ */ import_react10.default.createElement(TabPanel, {
     value,
     index: 1
-  }, /* @__PURE__ */ import_react7.default.createElement(import_react_error_boundary.ErrorBoundary, {
+  }, /* @__PURE__ */ import_react10.default.createElement(import_react_error_boundary.ErrorBoundary, {
     FallbackComponent: ErrorFallback
-  }, /* @__PURE__ */ import_react7.default.createElement(AddNewDevices, {
+  }, /* @__PURE__ */ import_react10.default.createElement(AddNewDevices, {
     devices
   }))));
 };
-import_react_dom.default.render(/* @__PURE__ */ import_react7.default.createElement(import_app.IoBrokerApp, {
+import_react_dom.default.render(/* @__PURE__ */ import_react10.default.createElement(import_app.IoBrokerApp, {
   name: "digitalstrom-vdc",
   translations
-}, /* @__PURE__ */ import_react7.default.createElement(Root, null)), document.getElementById("root"));
+}, /* @__PURE__ */ import_react10.default.createElement(Root, null)), document.getElementById("root"));
 /*!
   Copyright (c) 2015 Jed Watson.
   Based on code that is Copyright 2013-2015, Facebook, Inc.
@@ -11775,6 +12977,11 @@ import_react_dom.default.render(/* @__PURE__ */ import_react7.default.createElem
  * @license MIT
  */
 /** @license MUI v5.2.3
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/** @license Material-UI v4.11.2
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
