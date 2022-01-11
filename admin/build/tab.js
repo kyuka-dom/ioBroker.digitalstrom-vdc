@@ -43,7 +43,7 @@ import {
   require_styles,
   require_utils,
   require_zh_cn
-} from "./chunk-LRVGQRSV.js";
+} from "./chunk-I4AYBCHB.js";
 
 // node_modules/react-error-boundary/dist/react-error-boundary.umd.js
 var require_react_error_boundary_umd = __commonJS({
