@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 // import from iobroker-react docu page => https://github.com/AlCalzone/iobroker-react
-import { SettingsApp } from 'iobroker-react/app';
 import type { Translations } from 'iobroker-react/i18n';
-import { useIoBrokerTheme } from 'iobroker-react/hooks';
 // import from @iobroker/adapter-react
 import { ErrorBoundary } from 'react-error-boundary';
 import { IoBrokerApp } from 'iobroker-react/app';
 
 // UI elements are imported from Material-UI
-import { useSettings, useI18n } from 'iobroker-react/hooks';
-import { Tab, Tabs } from '@mui/material';
-
+import { useI18n } from 'iobroker-react/hooks';
+import { Tab, Tabs, Chip } from '@mui/material';
+import { Done, HighlightOff } from '@mui/icons-material';
 // Components are imported here
 import { TabPanel } from './components/TabPanel';
 import { AddNewDevices } from './pages/AddNewDevices';
 import { ListDevices } from './pages/ListDevices';
-import { useDevices } from './lib/useDevices';
+import { useAdapter } from 'iobroker-react';
 
 // Load your translations
 const translations: Translations = {
@@ -42,6 +40,39 @@ function ErrorFallback({ error, resetErrorBoundary }: any) {
 	);
 }
 
+const connectionState = () => {
+	const { alive: adapterRunning, connected: driverReady } = useAdapter();
+	const { translate: _ } = useI18n();
+
+	if (!adapterRunning || !driverReady)
+		return (
+			<Chip
+				style={{
+					position: 'absolute',
+					right: '30px',
+				}}
+				label={_('adapter not running')}
+				color="warning"
+				deleteIcon={<HighlightOff />}
+				onDelete={() => {}}
+			/>
+		);
+
+	return (
+		<Chip
+			style={{
+				position: 'absolute',
+				right: '30px',
+			}}
+			label={_('adapter running')}
+			deleteIcon={<Done />}
+			onDelete={() => {}}
+			color="success"
+			variant="outlined"
+		/>
+	);
+};
+
 const Root: React.FC = () => {
 	// const [themeName, setTheme] = useIoBrokerTheme();
 	const [value, setValue] = React.useState(0);
@@ -55,23 +86,22 @@ const Root: React.FC = () => {
 		setValue(newValue);
 	};
 
-	const [devices, updateDevices] = useDevices();
-
 	return (
 		<div>
 			<Tabs value={value} onChange={handleTabChange}>
 				<Tab label={_('tabListDevices')} />
 				<Tab label={_('tabAddNewDevices')} />
+				{connectionState()}
 			</Tabs>
 
 			<TabPanel value={value} index={0}>
 				<ErrorBoundary FallbackComponent={ErrorFallback}>
-					<ListDevices devices={devices} />
+					<ListDevices />
 				</ErrorBoundary>
 			</TabPanel>
 			<TabPanel value={value} index={1}>
 				<ErrorBoundary FallbackComponent={ErrorFallback}>
-					<AddNewDevices devices={devices} />
+					<AddNewDevices />
 				</ErrorBoundary>
 			</TabPanel>
 		</div>
