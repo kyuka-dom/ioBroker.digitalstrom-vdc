@@ -12,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 import { clearConfig } from '../lib/Config';
 import { SelectDeviceType } from '../options/DeviceTypeOptions';
+import { dsDevice } from '../types/dsDevice';
 
 export interface DevicesProps {
 	devices: Record<number, Device> | undefined;
@@ -23,11 +24,8 @@ export interface DialogTitleProps {
 	onClose: () => void;
 }
 
-export const AddNewDevices: React.FC<DevicesProps> = ({ devices }) => {
+export const AddNewDevices: React.FC = () => {
 	const [open, setOpen] = React.useState(false);
-	const { alive: adapterRunning, connected: driverReady } = useAdapter();
-
-	if (!adapterRunning || !driverReady) return <NotRunning />;
 
 	const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 		'& .MuiDialogContent-root': {
@@ -70,6 +68,8 @@ export const AddNewDevices: React.FC<DevicesProps> = ({ devices }) => {
 		clearConfig();
 	};
 
+	const api = useAPI();
+
 	return (
 		<div>
 			<Button variant="outlined" onClick={handleClickOpen}>
@@ -88,6 +88,38 @@ export const AddNewDevices: React.FC<DevicesProps> = ({ devices }) => {
 					</Button>
 				</DialogActions>
 			</BootstrapDialog>
+
+			<Button
+				onClick={async () => {
+					{
+						console.log('click to open Add Mock Device');
+						console.log(JSON.stringify(await api.listDevices()));
+						const testDevice: dsDevice = {
+							name: 'test',
+							watchStateID: { button_0: 'test' },
+							id: '12345',
+							dsConfig: {
+								dSUID: '1234556',
+								primaryGroup: 8,
+								name: 'testDevice',
+								modelFeatures: {
+									highlevel: true,
+								},
+								displayId: '',
+								model: 'ioBroker',
+								modelUID: 'UUID',
+								modelVersion: '0.0.1',
+								vendorName: 'KYUKA',
+							},
+						};
+						console.log(JSON.stringify(await api.createDevice(testDevice)));
+						console.log(JSON.stringify(await api.listDevices()));
+					}
+				}}
+				variant="outlined"
+			>
+				Add Mock Device
+			</Button>
 		</div>
 	);
 };
