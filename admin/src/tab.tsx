@@ -8,7 +8,7 @@ import { IoBrokerApp } from 'iobroker-react/app';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '@iobroker/adapter-react/Theme';
 // UI elements are imported from Material-UI
-import { useI18n } from 'iobroker-react/hooks';
+import { useI18n, useIoBrokerTheme } from 'iobroker-react/hooks';
 import { Tab, Tabs, Chip, ButtonGroup } from '@mui/material';
 import { Done, HighlightOff, RestartAlt } from '@mui/icons-material';
 
@@ -18,7 +18,6 @@ import { AddNewDevices } from './pages/AddNewDevices';
 import { ListDevices } from './pages/ListDevices';
 
 import { useAdapter } from 'iobroker-react';
-
 
 // Load your translations
 const translations: Translations = {
@@ -89,7 +88,6 @@ const connectionState = () => {
 	);
 };
 
-
 const Root: React.FC = () => {
 	const [value, setValue] = React.useState(0);
 	const { translate: _ } = useI18n();
@@ -106,29 +104,28 @@ const Root: React.FC = () => {
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme(themeName)}>
-			<Tabs value={value} onChange={handleTabChange}>
-				<Tab label={_('tabListDevices')} />
-				<Tab label={_('tabAddNewDevices')} />
-				<Tab label={_('tabExperts')} />
-				{connectionState()}
-			</Tabs>
+				<Tabs value={value} onChange={handleTabChange}>
+					<Tab label={_('tabListDevices')} />
+					<Tab label={_('tabAddNewDevices')} />
+					<Tab label={_('tabExperts')} />
+					{connectionState()}
+				</Tabs>
 
-			<TabPanel value={value} index={0}>
-				<ErrorBoundary FallbackComponent={ErrorFallback}>
-					<ListDevices />
-				</ErrorBoundary>
-			</TabPanel>
-			<TabPanel value={value} index={1}>
-				<ErrorBoundary FallbackComponent={ErrorFallback}>
-					<AddNewDevices />
-				</ErrorBoundary>
-			</TabPanel>
-			<TabPanel value={value} index={2}>
-				<ErrorBoundary FallbackComponent={ErrorFallback}>Experts</ErrorBoundary>
-			</TabPanel>
-		</ThemeProvider>
+				<TabPanel value={value} index={0}>
+					<ErrorBoundary FallbackComponent={ErrorFallback}>
+						<ListDevices />
+					</ErrorBoundary>
+				</TabPanel>
+				<TabPanel value={value} index={1}>
+					<ErrorBoundary FallbackComponent={ErrorFallback}>
+						<AddNewDevices />
+					</ErrorBoundary>
+				</TabPanel>
+				<TabPanel value={value} index={2}>
+					<ErrorBoundary FallbackComponent={ErrorFallback}>Experts</ErrorBoundary>
+				</TabPanel>
+			</ThemeProvider>
 		</React.Fragment>
-
 	);
 };
 

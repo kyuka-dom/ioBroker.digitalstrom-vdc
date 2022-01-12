@@ -14,7 +14,6 @@ import { useIoBrokerTheme } from 'iobroker-react/hooks';
 import Box from '@mui/material/Box';
 import { dsDevice } from '../types/dsDevice';
 
-
 export interface DevicesProps {
 	devices: Record<number, Device> | undefined;
 }
@@ -31,7 +30,7 @@ export const AddNewDevices: React.FC = () => {
 	const [themeName] = useIoBrokerTheme();
 
 	if (!adapterRunning || !driverReady) return <NotRunning />;
-	/* 
+	/*
 	const Color = (): { titel: string } => {
 		switch (themeName) {
 			case 'dark':
@@ -56,7 +55,6 @@ export const AddNewDevices: React.FC = () => {
 
  */
 
-
 	const api = useAPI();
 	// following line is used for selectID which will be deleted from this view
 	const [selectIdValue, setSelectIdValue] = React.useState<string | string[] | undefined>();
@@ -65,34 +63,6 @@ export const AddNewDevices: React.FC = () => {
 	return (
 		<div>
 			<SelectDeviceType />
-			{/* <Button variant="outlined" onClick={handleClickOpen}>
-				Add new Device
-			</Button>
-			<Dialog open={open} onClose={handleClose}>
-				<DialogTitle
-					sx={{
-						bgcolor: Color().titel,
-						textAlignLast: 'center',
-						fontSize: '1.4rem',
-					}}
-				>
-					Add Device
-				</DialogTitle>
-				<DialogContent dividers>
-					<SelectDeviceType />
-				</DialogContent>
-				<DialogActions>
-					<Button autoFocus onClick={handleClose}>
-						Save changes
-					</Button>
-					<Button autoFocus onClick={handleClose}>
-						Close
-					</Button>
-				</DialogActions>
-
-			</Dialog> */}
-
-			</BootstrapDialog>
 			<br />
 			<br />
 			<Button
