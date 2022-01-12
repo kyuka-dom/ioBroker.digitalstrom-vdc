@@ -27,5 +27,6 @@
   "are you sure you want to remove": "are you sure you want to remove",
   "adapter running": "VDC online",
   "adapter not running": "VDC offline",
-  "restart vdc": "restart VDC"
+  "restart vdc": "restart VDC",
+  "defineName": "Please set a Name"
 }

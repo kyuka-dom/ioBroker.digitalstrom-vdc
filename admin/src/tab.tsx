@@ -5,16 +5,20 @@ import type { Translations } from 'iobroker-react/i18n';
 // import from @iobroker/adapter-react
 import { ErrorBoundary } from 'react-error-boundary';
 import { IoBrokerApp } from 'iobroker-react/app';
-
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '@iobroker/adapter-react/Theme';
 // UI elements are imported from Material-UI
 import { useI18n } from 'iobroker-react/hooks';
 import { Tab, Tabs, Chip, ButtonGroup } from '@mui/material';
 import { Done, HighlightOff, RestartAlt } from '@mui/icons-material';
+
 // Components are imported here
 import { TabPanel } from './components/TabPanel';
 import { AddNewDevices } from './pages/AddNewDevices';
 import { ListDevices } from './pages/ListDevices';
+
 import { useAdapter } from 'iobroker-react';
+
 
 // Load your translations
 const translations: Translations = {
@@ -85,10 +89,11 @@ const connectionState = () => {
 	);
 };
 
+
 const Root: React.FC = () => {
-	// const [themeName, setTheme] = useIoBrokerTheme();
 	const [value, setValue] = React.useState(0);
 	const { translate: _ } = useI18n();
+	const [themeName] = useIoBrokerTheme();
 
 	const handleTabChange = (
 		// eslint-disable-next-line @typescript-eslint/ban-types
@@ -99,7 +104,8 @@ const Root: React.FC = () => {
 	};
 
 	return (
-		<div>
+		<React.Fragment>
+			<ThemeProvider theme={theme(themeName)}>
 			<Tabs value={value} onChange={handleTabChange}>
 				<Tab label={_('tabListDevices')} />
 				<Tab label={_('tabAddNewDevices')} />
@@ -120,7 +126,9 @@ const Root: React.FC = () => {
 			<TabPanel value={value} index={2}>
 				<ErrorBoundary FallbackComponent={ErrorFallback}>Experts</ErrorBoundary>
 			</TabPanel>
-		</div>
+		</ThemeProvider>
+		</React.Fragment>
+
 	);
 };
 
