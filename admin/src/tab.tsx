@@ -55,7 +55,7 @@ const Root: React.FC = () => {
 		setValue(newValue);
 	};
 
-	const [devices, updateDevices] = useDevices();
+	const [devices] = useDevices();
 
 	return (
 		<React.Fragment>

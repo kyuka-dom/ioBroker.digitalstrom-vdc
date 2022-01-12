@@ -10,6 +10,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { clearConfig } from '../lib/Config';
 import { SelectDeviceType } from '../options/DeviceTypeOptions';
 import { useIoBrokerTheme } from 'iobroker-react/hooks';
+import Box from '@mui/material/Box';
 
 export interface DevicesProps {
 	devices: Record<number, Device> | undefined;
@@ -27,7 +28,7 @@ export const AddNewDevices: React.FC<DevicesProps> = ({ devices }) => {
 	const [themeName] = useIoBrokerTheme();
 
 	if (!adapterRunning || !driverReady) return <NotRunning />;
-
+	/* 
 	const Color = (): { titel: string } => {
 		switch (themeName) {
 			case 'dark':
@@ -48,10 +49,11 @@ export const AddNewDevices: React.FC<DevicesProps> = ({ devices }) => {
 		setOpen(false);
 		clearConfig();
 	};
-
+ */
 	return (
 		<div>
-			<Button variant="outlined" onClick={handleClickOpen}>
+			<SelectDeviceType />
+			{/* <Button variant="outlined" onClick={handleClickOpen}>
 				Add new Device
 			</Button>
 			<Dialog open={open} onClose={handleClose}>
@@ -75,7 +77,7 @@ export const AddNewDevices: React.FC<DevicesProps> = ({ devices }) => {
 						Close
 					</Button>
 				</DialogActions>
-			</Dialog>
+			</Dialog> */}
 		</div>
 	);
 };
