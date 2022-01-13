@@ -1,25 +1,19 @@
 import * as React from 'react';
 import { Config } from '../../lib/Config';
 import { useDialogs } from 'iobroker-react';
-import { Button } from '@mui/material';
-/* import { useEffect } from 'react'; */
+import { Button, Box } from '@mui/material';
 import { useI18n } from 'iobroker-react/hooks';
-import Box from '@mui/material/Box';
 
-export default function HueSelectID() {
+export default function ColorTempSelectID() {
 	const [selectIdValue, setSelectIdValue] = React.useState<string | string[] | undefined>();
 	const { translate: _ } = useI18n();
 	const { showSelectId } = useDialogs();
 	const writeBackSelectId = (selectId) => {
 		setSelectIdValue(selectId);
-		Config.HueSelectID = selectId;
+		Config.ColorTempSelectID = selectId;
 	};
 
-	/* useEffect(() => {
-		Config.HueSelectID = selectIdValue;
-	}); */
-
-	console.log(Config.HueSelectID);
+	console.log(Config.ColorTempSelectID);
 
 	return (
 		<Box component="span" sx={{ p: 2, border: '1px dashed grey', textAlign: 'center' }}>
@@ -33,7 +27,6 @@ export default function HueSelectID() {
 							() => {
 								console.log('onClose');
 							},
-							/* setSelectIdValue, */
 							writeBackSelectId,
 							selectIdValue,
 						);
@@ -41,11 +34,11 @@ export default function HueSelectID() {
 				}}
 				variant="outlined"
 			>
-				{_('hueSelectID')}
+				{_('colorTempSelectID')}
 			</Button>
 			<br />
 			<br />
-			{_('selectedHueDP')}
+			{_('selectedColorTempDP')}
 			<br />
 			<br />
 			{JSON.stringify(selectIdValue)}
