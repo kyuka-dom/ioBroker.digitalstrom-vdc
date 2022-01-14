@@ -1,18 +1,18 @@
 import React from 'react';
 import { Device, useAPI } from '../lib/useAPI';
-import { useAdapter, useDialogs } from 'iobroker-react';
-import { NotRunning } from '../components/Messages';
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import { clearConfig } from '../lib/Config';
-import { SelectDeviceType } from '../options/DeviceTypeOptions';
 
+import Button from '@mui/material/Button';
 import { useIoBrokerTheme } from 'iobroker-react/hooks';
-import Box from '@mui/material/Box';
 import { dsDevice } from '../types/dsDevice';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { wizardDeviceConfig } from '../lib/wizardDeviceConfig';
+import { DeviceOptions, WizardDevice, WizardDeviceField } from '../types/wizardTypes';
+import { WizardSelect } from '../components/WizardSelect';
+import { useDialogs } from 'iobroker-react';
+import { Grid } from '@mui/material/';
+import { WizardInput } from '../components/WizardInput';
+import { colorClassOptions } from '../options/ColorClassOption';
+import { WizardSelectId } from '../components/WizardSelectId';
 
 export interface DevicesProps {
 	devices: Record<number, Device> | undefined;
@@ -23,6 +23,62 @@ export interface DialogTitleProps {
 	children?: React.ReactNode;
 	onClose: () => void;
 }
+
+const _renderField = (deviceType: string, f: WizardDeviceField, state, setState) => {
+	// const [state, setState] = React.useState({});
+
+	const handleFieldChange = (event?, name?: string, value?: string | string[] | undefined) => {
+		const previousObj = state[deviceType];
+		setState({
+			...state,
+			[deviceType]: { ...previousObj, [name ? name : event.target.name]: value ? value : event.target.value },
+		});
+	};
+
+	switch (f.type) {
+		case 'input': {
+			return (
+				<Grid item xs={12} md={4} key={f.name}>
+					<WizardInput name={f.name} value={state[deviceType][f.name]} onChange={handleFieldChange} />
+				</Grid>
+			);
+		}
+		case 'select': {
+			return (
+				<Grid item xs={12} md={4} key={f.name}>
+					<WizardSelect
+						optionsList={colorClassOptions}
+						name={f.name}
+						value={state[deviceType][f.name]}
+						onChange={handleFieldChange}
+					/>
+				</Grid>
+			);
+		}
+		case 'selectID': {
+			return (
+				<Grid item xs={12} md={4} key={f.name}>
+					<WizardSelectId name={f.name} value={state[deviceType][f.name]} onChange={handleFieldChange} />
+				</Grid>
+			);
+		}
+	}
+};
+
+const _renderWizard = (deviceType, state, setState) => {
+	if (!wizardDeviceConfig[deviceType]) return null;
+	const fields: [WizardDeviceField] = wizardDeviceConfig[deviceType].fields;
+
+	return (
+		<TableRow>
+			<TableCell>
+				<Grid container columns={{ xs: 12, md: 4 }}>
+					{fields.map((f: WizardDeviceField) => _renderField(deviceType, f, state, setState))}
+				</Grid>
+			</TableCell>
+		</TableRow>
+	);
+};
 
 export const AddNewDevices: React.FC = () => {
 	const [open, setOpen] = React.useState(false);
@@ -54,14 +110,55 @@ export const AddNewDevices: React.FC = () => {
  */
 
 	const api = useAPI();
-	// following line is used for selectID which will be deleted from this view
-	const [selectIdValue, setSelectIdValue] = React.useState<string | string[] | undefined>();
-	const { showSelectId } = useDialogs();
+
+	const deviceOptions: Array<DeviceOptions> = [];
+	const stateInit = {
+		deviceType: '',
+	};
+
+	Object.keys(wizardDeviceConfig).forEach((dKey: string) => {
+		const wizardDevice: WizardDevice = wizardDeviceConfig[dKey];
+		stateInit[dKey] = {};
+		wizardDevice.fields.forEach((field: WizardDeviceField) => {
+			stateInit[dKey][field.name] = '';
+		});
+		deviceOptions.push({
+			disabled: false,
+			title: dKey,
+			label: dKey,
+			i18n: wizardDevice.i18n,
+		});
+	});
+
+	const [state, setState] = React.useState(stateInit);
+
+	const handleFieldChange = (event) => {
+		console.log(event.target.name, event.target.value);
+		setState({ ...state, [event.target.name]: event.target.value });
+	};
 
 	return (
 		<div>
-			<SelectDeviceType />
+			{/* <SelectDeviceType /> */}
+			<TableContainer component={Paper} elevation={1}>
+				<Table aria-label="collapsible table">
+					<TableBody>
+						<TableRow>
+							<TableCell>
+								<WizardSelect
+									optionsList={deviceOptions}
+									name="deviceType"
+									value={state.deviceType}
+									onChange={handleFieldChange}
+								/>
+							</TableCell>
+						</TableRow>
+						{_renderWizard(state.deviceType, state, setState)}
+					</TableBody>
+				</Table>
+			</TableContainer>
 			<br />
+			{JSON.stringify(state, null, 4)}
 			<br />
 			<hr />
 			<h3>
@@ -98,30 +195,6 @@ export const AddNewDevices: React.FC = () => {
 			>
 				Add Mock Device
 			</Button>
-			<br />
-			<br />
-			<Button
-				onClick={() => {
-					{
-						console.log('click to open selectID');
-						console.log('showSelectId', showSelectId);
-						showSelectId(
-							'test',
-							() => {
-								console.log('onClose');
-							},
-							setSelectIdValue,
-							selectIdValue,
-						);
-					}
-				}}
-				variant="outlined"
-			>
-				SelectID
-			</Button>
-			<br />
-			<br />
-			SelectIDs: {JSON.stringify(selectIdValue)}
 		</div>
 	);
 };

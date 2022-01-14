@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Config } from '../lib/Config';
 
 //const deviceTypeOptions: { value: string; title: string }[] = [
-const colorClassOptions = [
+export const colorClassOptions = [
 	{
 		label: 'Select DS Color',
 		title: 'selectcolor',
