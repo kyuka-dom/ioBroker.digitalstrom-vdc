@@ -1,6 +1,9 @@
+import { dsDevice } from './dsDevice';
+
 export type WizardDevice = {
 	i18n: string;
 	fields: [WizardDeviceField];
+	dsConfigTemplate?: dsDevice;
 };
 export type WizardDeviceField = {
 	name: string;
@@ -8,6 +11,9 @@ export type WizardDeviceField = {
 	type: string;
 	source?: string;
 	multiple?: boolean;
+	optionsList?: DeviceOptions[];
+	tooltip: string;
+	objName?: string;
 };
 
 export type DeviceOptions = {

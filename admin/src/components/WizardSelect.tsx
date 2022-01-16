@@ -5,7 +5,7 @@ import { DeviceOptions } from '../types/wizardTypes';
 
 interface selectProps {
 	children?: React.ReactNode;
-	optionsList: Array<DeviceOptions>;
+	optionsList: DeviceOptions[] | undefined;
 	name: string;
 	value?: string;
 	i18n?: string;

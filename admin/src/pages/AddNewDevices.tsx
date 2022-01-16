@@ -2,17 +2,17 @@ import React from 'react';
 import { Device, useAPI } from '../lib/useAPI';
 
 import Button from '@mui/material/Button';
-import { useIoBrokerTheme } from 'iobroker-react/hooks';
-import { dsDevice } from '../types/dsDevice';
+import { useIoBrokerTheme, useDialogs } from 'iobroker-react/hooks';
+import { dsDevice, watchStateID } from '../types/dsDevice';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import { wizardDeviceConfig } from '../lib/wizardDeviceConfig';
 import { DeviceOptions, WizardDevice, WizardDeviceField } from '../types/wizardTypes';
 import { WizardSelect } from '../components/WizardSelect';
-import { useDialogs } from 'iobroker-react';
-import { Grid } from '@mui/material/';
 import { WizardInput } from '../components/WizardInput';
-import { colorClassOptions } from '../options/ColorClassOption';
 import { WizardSelectId } from '../components/WizardSelectId';
+import { useI18n } from 'iobroker-react/hooks';
+import Handlebars from 'handlebars/dist/cjs/handlebars';
+import { genDSUID } from '../lib/Helper';
 
 export interface DevicesProps {
 	devices: Record<number, Device> | undefined;
@@ -26,6 +26,7 @@ export interface DialogTitleProps {
 
 const _renderField = (deviceType: string, f: WizardDeviceField, state, setState) => {
 	// const [state, setState] = React.useState({});
+	const { translate: _ } = useI18n();
 
 	const handleFieldChange = (event?, name?: string, value?: string | string[] | undefined) => {
 		const previousObj = state[deviceType];
@@ -38,28 +39,39 @@ const _renderField = (deviceType: string, f: WizardDeviceField, state, setState)
 	switch (f.type) {
 		case 'input': {
 			return (
-				<Grid item xs={12} md={4} key={f.name}>
-					<WizardInput name={f.name} value={state[deviceType][f.name]} onChange={handleFieldChange} />
-				</Grid>
+				<TableRow>
+					<TableCell>{_(f.tooltip)}</TableCell>
+
+					<TableCell>
+						<WizardInput name={f.name} value={state[deviceType][f.name]} onChange={handleFieldChange} />
+					</TableCell>
+				</TableRow>
 			);
 		}
 		case 'select': {
 			return (
-				<Grid item xs={12} md={4} key={f.name}>
-					<WizardSelect
-						optionsList={colorClassOptions}
-						name={f.name}
-						value={state[deviceType][f.name]}
-						onChange={handleFieldChange}
-					/>
-				</Grid>
+				<TableRow>
+					<TableCell>{_(f.tooltip)}</TableCell>
+
+					<TableCell>
+						<WizardSelect
+							optionsList={f.optionsList}
+							name={f.name}
+							value={state[deviceType][f.name]}
+							onChange={handleFieldChange}
+						/>
+					</TableCell>
+				</TableRow>
 			);
 		}
 		case 'selectID': {
 			return (
-				<Grid item xs={12} md={4} key={f.name}>
-					<WizardSelectId name={f.name} value={state[deviceType][f.name]} onChange={handleFieldChange} />
-				</Grid>
+				<TableRow>
+					<TableCell>{_(f.tooltip)}</TableCell>
+					<TableCell>
+						<WizardSelectId name={f.name} value={state[deviceType][f.name]} onChange={handleFieldChange} />
+					</TableCell>
+				</TableRow>
 			);
 		}
 	}
@@ -70,44 +82,17 @@ const _renderWizard = (deviceType, state, setState) => {
 	const fields: [WizardDeviceField] = wizardDeviceConfig[deviceType].fields;
 
 	return (
-		<TableRow>
-			<TableCell>
-				<Grid container columns={{ xs: 12, md: 4 }}>
-					{fields.map((f: WizardDeviceField) => _renderField(deviceType, f, state, setState))}
-				</Grid>
-			</TableCell>
-		</TableRow>
+		<React.Fragment>
+			{fields.map((f: WizardDeviceField) => _renderField(deviceType, f, state, setState))}
+		</React.Fragment>
 	);
 };
 
 export const AddNewDevices: React.FC = () => {
 	const [open, setOpen] = React.useState(false);
 	const [themeName] = useIoBrokerTheme();
-
-	/*
-	const Color = (): { titel: string } => {
-		switch (themeName) {
-			case 'dark':
-				return { titel: '#3b3b3b66' };
-			case 'blue':
-				return { titel: '#3e464a61' };
-			case 'light':
-				return { titel: '#b7b7b7' };
-			case 'colored':
-				return { titel: '#b7b7b7' };
-		}
-
-	};
-
-	const handleClickOpen = () => {
-		setOpen(true);
-	};
-	const handleClose = () => {
-		setOpen(false);
-		clearConfig();
-	};
-
- */
+	const { translate: _ } = useI18n();
+	const { showNotification } = useDialogs();
 
 	const api = useAPI();
 
@@ -122,6 +107,10 @@ export const AddNewDevices: React.FC = () => {
 		wizardDevice.fields.forEach((field: WizardDeviceField) => {
 			stateInit[dKey][field.name] = '';
 		});
+		stateInit[dKey].dsConfigTemplate = wizardDevice.dsConfigTemplate;
+		stateInit[dKey].dSUID = genDSUID();
+		stateInit[dKey].id = genDSUID();
+		stateInit[dKey].modelUID = genDSUID();
 		deviceOptions.push({
 			disabled: false,
 			title: dKey,
@@ -135,6 +124,7 @@ export const AddNewDevices: React.FC = () => {
 	const handleFieldChange = (event) => {
 		console.log(event.target.name, event.target.value);
 		setState({ ...state, [event.target.name]: event.target.value });
+		// setState({ ...state, dsConfigTemplate: wizardDeviceConfig[event.target.name].dsConfigTemplate });
 	};
 
 	return (
@@ -158,42 +148,72 @@ export const AddNewDevices: React.FC = () => {
 				</Table>
 			</TableContainer>
 			<br />
-			{JSON.stringify(state, null, 4)}
-			<br />
-			<hr />
-			<h3>
-				This is not part of the UI. More or less a store of buttons to allow the rest of the UI to be tested
-			</h3>
 			<Button
+				disabled={state.deviceType && state[state.deviceType]['name'] ? false : true}
 				onClick={async () => {
 					{
-						console.log('click to open Add Mock Device');
-						console.log(JSON.stringify(await api.listDevices()));
-						const testDevice: dsDevice = {
-							name: 'test',
-							watchStateID: { button_0: 'test' },
-							id: '12345',
-							dsConfig: {
-								dSUID: '1234556',
-								primaryGroup: 8,
-								name: 'testDevice',
-								modelFeatures: {
-									highlevel: true,
-								},
-								displayId: '',
-								model: 'ioBroker',
-								modelUID: 'UUID',
-								modelVersion: '0.0.1',
-								vendorName: 'KYUKA',
-							},
-						};
-						console.log(JSON.stringify(await api.createDevice(testDevice)));
-						console.log(JSON.stringify(await api.listDevices()));
+						console.log('adding device');
+
+						// generate watchStateId
+						if (!wizardDeviceConfig[state.deviceType]) return null;
+						const selectIDs: [WizardDeviceField] = wizardDeviceConfig[state.deviceType].fields.filter(
+							(f) => f.type === 'selectID',
+						);
+						const watchStateID: watchStateID = {};
+						selectIDs.forEach((s: WizardDeviceField) => {
+							if (s.objName && !watchStateID[s.objName]) {
+								// not processed yet
+								if (state[state.deviceType][s.name] && state[state.deviceType][s.name].length > 0)
+									watchStateID[s.objName] = state[state.deviceType][s.name];
+							} else if (s.objName) {
+								// already exists -> create array or increase it
+								if (
+									Array.isArray(watchStateID[s.objName]) &&
+									state[state.deviceType][s.name] &&
+									state[state.deviceType][s.name].length > 0
+								) {
+									const obj: string[] = watchStateID[s.objName] as string[];
+									obj.push(state[state.deviceType][s.name] as string);
+									watchStateID[s.objName] = obj;
+								} else if (
+									state[state.deviceType][s.name] &&
+									state[state.deviceType][s.name].length > 0
+								) {
+									// create array
+									const firstState = watchStateID[s.objName];
+									const obj: string[] = [];
+
+									obj.push(firstState as string);
+									obj.push(state[state.deviceType][s.name] as string);
+									watchStateID[s.objName] = obj;
+								}
+							}
+						});
+
+						const dsConfigTemplate = state[state.deviceType].dsConfigTemplate;
+						dsConfigTemplate.watchStateID = watchStateID;
+
+						// generate DSConfig
+						const template = Handlebars.compile(JSON.stringify(dsConfigTemplate));
+						const renderedConfig = template(state[state.deviceType]);
+						try {
+							const newDevice: dsDevice = JSON.parse(renderedConfig);
+							console.log(newDevice);
+							await api.createDevice(newDevice);
+
+							console.log(JSON.stringify(await api.listDevices()));
+							setState({ deviceType: '' });
+							showNotification(_('device successfully created'), 'success');
+						} catch (e: any) {
+							showNotification(_('device not created'), 'error');
+
+							throw e;
+						}
 					}
 				}}
 				variant="outlined"
 			>
-				Add Mock Device
+				{_('Add new device')}
 			</Button>
 		</div>
 	);

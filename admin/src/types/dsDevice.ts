@@ -6,7 +6,7 @@ export type dsDevice = {
 };
 
 export type watchStateID = {
-	[key: string]: string;
+	[key: string]: string | string[];
 };
 
 export type dsConfig = {
