@@ -36,6 +36,14 @@
 	"name": "Device Name",
 	"colorGroup": "ColorClass",
 	"selectID": "select ID for Switch",
+	"wizard-Lamp": "Basic Lamp",
+	"wizard-lamp-tooltip": "please define a name, this name will be displayed in DS as DeviceName",
+	"wizard-lamp-name-tooltip": "please define a name, this name will be displayed in DS as DeviceName",
+	"wizard-lamp-colorGroup-tooltip": "please define the device's color class",
+	"wizard-switch-lamp-tooltip": "please select the ON/OFF DP on ioBroker for your Lamp Device",
+	"selectID-lamp": "select ID for Basic Lamp",
+	"wizard-Button": "Button",
+	"wizard-Switch": "Switch",
 	"Template": "8: black/joker",
 	"defineName": "Please set a Name"
 }
