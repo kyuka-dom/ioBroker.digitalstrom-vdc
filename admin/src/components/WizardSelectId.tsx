@@ -2,6 +2,7 @@ import React from 'react';
 import { useDialogs } from 'iobroker-react';
 import Button from '@mui/material/Button';
 import { useI18n } from 'iobroker-react/hooks';
+import { Grid } from '@mui/material/';
 
 interface selectIDProps {
 	children?: React.ReactNode;
@@ -24,25 +25,30 @@ export const WizardSelectId: React.FC<selectIDProps> = (props) => {
 
 	return (
 		<React.Fragment>
-			<Button
-				onClick={() => {
-					{
-						console.log('click to open selectID');
-						console.log('showSelectId', showSelectId);
-						showSelectId(
-							props.name,
-							() => {
-								console.log('onClose');
-							},
-							handleOnChange,
-							props.value,
-						);
-					}
-				}}
-				variant="outlined"
-			>
-				{props.i18n ? _(props.i18n) : props.name}
-			</Button>
+			<Grid container spacing={2}>
+				<Grid item>
+					<Button
+						onClick={() => {
+							{
+								console.log('click to open selectID');
+								console.log('showSelectId', showSelectId);
+								showSelectId(
+									props.name,
+									() => {
+										console.log('onClose');
+									},
+									handleOnChange,
+									props.value,
+								);
+							}
+						}}
+						variant="outlined"
+					>
+						{props.i18n ? _(props.i18n) : props.name}
+					</Button>
+				</Grid>
+				<Grid item>{props.value}</Grid>
+			</Grid>
 		</React.Fragment>
 	);
 };
