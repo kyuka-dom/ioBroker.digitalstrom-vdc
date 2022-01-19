@@ -4,7 +4,7 @@ import { Device, useAPI } from '../lib/useAPI';
 import Button from '@mui/material/Button';
 import { useIoBrokerTheme, useDialogs } from 'iobroker-react/hooks';
 import { dsDevice, watchStateID } from '../types/dsDevice';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableRow, Box } from '@mui/material';
 import { wizardDeviceConfig } from '../lib/wizardDeviceConfig';
 import { DeviceOptions, WizardDevice, WizardDeviceField } from '../types/wizardTypes';
 import { WizardSelect } from '../components/WizardSelect';
@@ -39,39 +39,79 @@ const _renderField = (deviceType: string, f: WizardDeviceField, state, setState)
 	switch (f.type) {
 		case 'input': {
 			return (
-				<TableRow>
-					<TableCell>{_(f.tooltip)}</TableCell>
+				<Box
+					sx={{
+						marginTop: '10px',
+						paddingBottom: '15px',
+						alignItems: 'center',
+						justifyContent: 'space-evenly',
+						display: 'flex',
+						flexWrap: 'wrap',
+						flexDirection: 'row',
+					}}
+				>
+					<TableRow>
+						<TableCell>{_(f.tooltip)}</TableCell>
 
-					<TableCell>
-						<WizardInput name={f.name} value={state[deviceType][f.name]} onChange={handleFieldChange} />
-					</TableCell>
-				</TableRow>
+						<TableCell>
+							<WizardInput name={f.name} value={state[deviceType][f.name]} onChange={handleFieldChange} />
+						</TableCell>
+					</TableRow>
+				</Box>
 			);
 		}
 		case 'select': {
 			return (
-				<TableRow>
-					<TableCell>{_(f.tooltip)}</TableCell>
+				<Box
+					sx={{
+						marginTop: '10px',
+						paddingBottom: '15px',
+						alignItems: 'center',
+						justifyContent: 'space-evenly',
+						display: 'flex',
+						flexWrap: 'wrap',
+						flexDirection: 'row',
+					}}
+				>
+					<TableRow>
+						<TableCell>{_(f.tooltip)}</TableCell>
 
-					<TableCell>
-						<WizardSelect
-							optionsList={f.optionsList}
-							name={f.name}
-							value={state[deviceType][f.name]}
-							onChange={handleFieldChange}
-						/>
-					</TableCell>
-				</TableRow>
+						<TableCell>
+							<WizardSelect
+								optionsList={f.optionsList}
+								name={f.name}
+								value={state[deviceType][f.name]}
+								onChange={handleFieldChange}
+							/>
+						</TableCell>
+					</TableRow>
+				</Box>
 			);
 		}
 		case 'selectID': {
 			return (
-				<TableRow>
-					<TableCell>{_(f.tooltip)}</TableCell>
-					<TableCell>
-						<WizardSelectId name={f.name} value={state[deviceType][f.name]} onChange={handleFieldChange} />
-					</TableCell>
-				</TableRow>
+				<Box
+					sx={{
+						marginTop: '10px',
+						paddingBottom: '15px',
+						alignItems: 'center',
+						justifyContent: 'space-evenly',
+						display: 'flex',
+						flexWrap: 'wrap',
+						flexDirection: 'row',
+					}}
+				>
+					<TableRow>
+						<TableCell>{_(f.tooltip)}</TableCell>
+						<TableCell>
+							<WizardSelectId
+								name={f.name}
+								value={state[deviceType][f.name]}
+								onChange={handleFieldChange}
+							/>
+						</TableCell>
+					</TableRow>
+				</Box>
 			);
 		}
 	}
@@ -133,7 +173,17 @@ export const AddNewDevices: React.FC = () => {
 			<TableContainer component={Paper} elevation={1}>
 				<Table aria-label="collapsible table">
 					<TableBody>
-						<TableRow>
+						<TableRow
+							sx={{
+								marginTop: '10px',
+								paddingBottom: '15px',
+								alignItems: 'center',
+								justifyContent: 'space-around',
+								display: 'flex',
+								flexWrap: 'wrap',
+								flexDirection: 'row',
+							}}
+						>
 							<TableCell>
 								<WizardSelect
 									optionsList={deviceOptions}
