@@ -48,6 +48,9 @@ const _renderField = (deviceType: string, f: WizardDeviceField, state, setState)
 						display: 'flex',
 						flexWrap: 'wrap',
 						flexDirection: 'row',
+						minWidth: 120,
+						maxWidth: 1500,
+						width: 1200,
 					}}
 				>
 					<TableRow>
@@ -71,6 +74,9 @@ const _renderField = (deviceType: string, f: WizardDeviceField, state, setState)
 						display: 'flex',
 						flexWrap: 'wrap',
 						flexDirection: 'row',
+						minWidth: 120,
+						maxWidth: 1500,
+						width: 1200,
 					}}
 				>
 					<TableRow>
@@ -99,6 +105,9 @@ const _renderField = (deviceType: string, f: WizardDeviceField, state, setState)
 						display: 'flex',
 						flexWrap: 'wrap',
 						flexDirection: 'row',
+						minWidth: 120,
+						maxWidth: 1500,
+						width: 1200,
 					}}
 				>
 					<TableRow>
@@ -170,101 +179,113 @@ export const AddNewDevices: React.FC = () => {
 	return (
 		<div>
 			{/* <SelectDeviceType /> */}
-			<TableContainer component={Paper} elevation={1}>
-				<Table aria-label="collapsible table">
-					<TableBody>
-						<TableRow
-							sx={{
-								marginTop: '10px',
-								paddingBottom: '15px',
-								alignItems: 'center',
-								justifyContent: 'space-around',
-								display: 'flex',
-								flexWrap: 'wrap',
-								flexDirection: 'row',
-							}}
-						>
-							<TableCell>
-								<WizardSelect
-									optionsList={deviceOptions}
-									name="deviceType"
-									value={state.deviceType}
-									onChange={handleFieldChange}
-								/>
-							</TableCell>
-						</TableRow>
-						{_renderWizard(state.deviceType, state, setState)}
-					</TableBody>
-				</Table>
-			</TableContainer>
-			<br />
-			<Button
-				disabled={state.deviceType && state[state.deviceType]['name'] ? false : true}
-				onClick={async () => {
-					{
-						console.log('adding device');
-
-						// generate watchStateId
-						if (!wizardDeviceConfig[state.deviceType]) return null;
-						const selectIDs: [WizardDeviceField] = wizardDeviceConfig[state.deviceType].fields.filter(
-							(f) => f.type === 'selectID',
-						);
-						const watchStateID: watchStateID = {};
-						selectIDs.forEach((s: WizardDeviceField) => {
-							if (s.objName && !watchStateID[s.objName]) {
-								// not processed yet
-								if (state[state.deviceType][s.name] && state[state.deviceType][s.name].length > 0)
-									watchStateID[s.objName] = state[state.deviceType][s.name];
-							} else if (s.objName) {
-								// already exists -> create array or increase it
-								if (
-									Array.isArray(watchStateID[s.objName]) &&
-									state[state.deviceType][s.name] &&
-									state[state.deviceType][s.name].length > 0
-								) {
-									const obj: string[] = watchStateID[s.objName] as string[];
-									obj.push(state[state.deviceType][s.name] as string);
-									watchStateID[s.objName] = obj;
-								} else if (
-									state[state.deviceType][s.name] &&
-									state[state.deviceType][s.name].length > 0
-								) {
-									// create array
-									const firstState = watchStateID[s.objName];
-									const obj: string[] = [];
-
-									obj.push(firstState as string);
-									obj.push(state[state.deviceType][s.name] as string);
-									watchStateID[s.objName] = obj;
-								}
-							}
-						});
-
-						const dsConfigTemplate = state[state.deviceType].dsConfigTemplate;
-						dsConfigTemplate.watchStateID = watchStateID;
-
-						// generate DSConfig
-						const template = Handlebars.compile(JSON.stringify(dsConfigTemplate));
-						const renderedConfig = template(state[state.deviceType]);
-						try {
-							const newDevice: dsDevice = JSON.parse(renderedConfig);
-							console.log(newDevice);
-							await api.createDevice(newDevice);
-
-							console.log(JSON.stringify(await api.listDevices()));
-							setState({ deviceType: '' });
-							showNotification(_('device successfully created'), 'success');
-						} catch (e: any) {
-							showNotification(_('device not created'), 'error');
-
-							throw e;
-						}
-					}
+			<Box
+				sx={{
+					marginTop: '10px',
+					paddingBottom: '15px',
+					alignItems: 'center',
+					justifyContent: 'space-evenly',
+					display: 'flex',
+					flexWrap: 'wrap',
+					flexDirection: 'row',
 				}}
-				variant="outlined"
 			>
-				{_('Add new device')}
-			</Button>
+				<TableContainer component={Paper} elevation={1}>
+					<Table aria-label="collapsible table">
+						<TableBody>
+							<TableRow
+								sx={{
+									marginTop: '10px',
+									paddingBottom: '15px',
+									alignItems: 'center',
+									justifyContent: 'space-evenly',
+									display: 'flex',
+									flexWrap: 'wrap',
+									flexDirection: 'row',
+								}}
+							>
+								<TableCell>
+									<WizardSelect
+										optionsList={deviceOptions}
+										name="deviceType"
+										value={state.deviceType}
+										onChange={handleFieldChange}
+									/>
+								</TableCell>
+							</TableRow>
+							{_renderWizard(state.deviceType, state, setState)}
+						</TableBody>
+					</Table>
+				</TableContainer>
+				<br />
+				<Button
+					disabled={state.deviceType && state[state.deviceType]['name'] ? false : true}
+					onClick={async () => {
+						{
+							console.log('adding device');
+
+							// generate watchStateId
+							if (!wizardDeviceConfig[state.deviceType]) return null;
+							const selectIDs: [WizardDeviceField] = wizardDeviceConfig[state.deviceType].fields.filter(
+								(f) => f.type === 'selectID',
+							);
+							const watchStateID: watchStateID = {};
+							selectIDs.forEach((s: WizardDeviceField) => {
+								if (s.objName && !watchStateID[s.objName]) {
+									// not processed yet
+									if (state[state.deviceType][s.name] && state[state.deviceType][s.name].length > 0)
+										watchStateID[s.objName] = state[state.deviceType][s.name];
+								} else if (s.objName) {
+									// already exists -> create array or increase it
+									if (
+										Array.isArray(watchStateID[s.objName]) &&
+										state[state.deviceType][s.name] &&
+										state[state.deviceType][s.name].length > 0
+									) {
+										const obj: string[] = watchStateID[s.objName] as string[];
+										obj.push(state[state.deviceType][s.name] as string);
+										watchStateID[s.objName] = obj;
+									} else if (
+										state[state.deviceType][s.name] &&
+										state[state.deviceType][s.name].length > 0
+									) {
+										// create array
+										const firstState = watchStateID[s.objName];
+										const obj: string[] = [];
+
+										obj.push(firstState as string);
+										obj.push(state[state.deviceType][s.name] as string);
+										watchStateID[s.objName] = obj;
+									}
+								}
+							});
+
+							const dsConfigTemplate = state[state.deviceType].dsConfigTemplate;
+							dsConfigTemplate.watchStateID = watchStateID;
+
+							// generate DSConfig
+							const template = Handlebars.compile(JSON.stringify(dsConfigTemplate));
+							const renderedConfig = template(state[state.deviceType]);
+							try {
+								const newDevice: dsDevice = JSON.parse(renderedConfig);
+								console.log(newDevice);
+								await api.createDevice(newDevice);
+
+								console.log(JSON.stringify(await api.listDevices()));
+								setState({ deviceType: '' });
+								showNotification(_('device successfully created'), 'success');
+							} catch (e: any) {
+								showNotification(_('device not created'), 'error');
+
+								throw e;
+							}
+						}
+					}}
+					variant="outlined"
+				>
+					{_('Add new device')}
+				</Button>
+			</Box>
 		</div>
 	);
 };
