@@ -28,5 +28,7 @@
   "adapter running": "VDC online",
   "adapter not running": "VDC offline",
   "restart vdc": "restart VDC",
-  "defineName": "Please set a Name"
+  "defineName": "Please set a Name",
+  "wizard-switch-singleclick-tooltip": "Select the datapoint which controls the singleclick of this button. Preferably it has the role «button». The action is triggered when this datapoint is set to true",
+  "wizard-switch-longclick-tooltip": "Select the datapoint which controls the longclick (1sek) of this button. Preferably it has the role «button.long». The action is triggered when this datapoint is set to true"
 }

@@ -18,6 +18,7 @@ import {
 	Typography,
 } from '@mui/material';
 import { dsDevice } from '../types/dsDevice';
+import Icon from '@mui/material/Icon';
 import IconButton from '@mui/material/IconButton';
 import Box from '@material-ui/core/Box';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -56,7 +57,12 @@ function Row(props: any) {
 					</IconButton>
 				</TableCell>
 				<TableCell component="th" scope="row">
-					<Chip icon={<LightIcon />} label={row.common.name} variant="outlined" />
+					<Chip
+						sx={{ fontSize: 'unset important!' }}
+						icon={<Icon fontSize="large">light</Icon>}
+						label={row.common.name}
+						variant="outlined"
+					/>
 				</TableCell>
 				<TableCell align="right">{moment(row.ts).format('DD.MM.YYYY')}</TableCell>
 				<TableCell align="right">{row.native.deviceObj.dsConfig.dSUID}</TableCell>

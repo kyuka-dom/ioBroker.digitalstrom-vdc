@@ -157,19 +157,15 @@ class DigitalstromVdc extends utils.Adapter {
 						const deviceObj = obj.message as any;
 						this.log.debug(JSON.stringify(deviceObj));
 						this.setObjectNotExistsAsync(`DS-Devices.configuredDevices.${deviceObj.id}`, {
-							type: 'state',
+							type: 'device',
 							common: {
 								name: deviceObj.name,
-								type: 'boolean',
-								role: 'indicator',
-								read: true,
-								write: true,
 							},
 							native: {
 								deviceObj,
 							},
 						});
-						await this.setStateAsync(`DS-Devices.configuredDevices.${deviceObj.id}`, true);
+						// await this.setStateAsync(`DS-Devices.configuredDevices.${deviceObj.id}`, true);
 						this.allDevices = await this.refreshDeviceList();
 						return respond(responses.OK);
 						//

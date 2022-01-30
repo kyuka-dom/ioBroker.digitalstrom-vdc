@@ -51,7 +51,7 @@ const _renderField = (deviceType: string, f: WizardDeviceField, state, setState)
 		case 'select': {
 			return (
 				<TableRow>
-					<TableCell>{_(f.tooltip)}</TableCell>
+					<TableCell sx={{ maxWidth: 1 / 2 }}>{_(f.tooltip)}</TableCell>
 
 					<TableCell>
 						<WizardSelect
@@ -142,6 +142,7 @@ export const AddNewDevices: React.FC = () => {
 									onChange={handleFieldChange}
 								/>
 							</TableCell>
+							<TableCell></TableCell>
 						</TableRow>
 						{_renderWizard(state.deviceType, state, setState)}
 					</TableBody>
