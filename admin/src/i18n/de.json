@@ -16,5 +16,14 @@
 	"tabAddNewDevices": "add new device to digitalstrom",
 	"adapter not ready": "The adapter is currently not running",
 	"No devices present": "There are no devices configured. Please add a few!",
+	"wizard-switch-name-tooltip": "Bitte definiere einen Namen, dieser Name wird in DS als GeräteName angezeigt",
+	"yellowColorClass": "1: gelb/hell",
+	"blackColorClass": "8: Schwarz/Joker",
+	"wizard-switch-colorGroup-tooltip": "Bitte definiere die Farbklasse des Geräts",
+	"wizard-switch-selectState-tooltip": "Bitte wähle den DP in ioBroker für das Switch-Gerät",
+	"name": "Geräte Name",
+	"colorGroup": "Farbklasse",
+	"selectID": "wähle ID für Switch",
+	"Template": "8: black/joker",
 	"defineName": "Name vergeben"
 }

@@ -4,7 +4,7 @@ import { Device, useAPI } from '../lib/useAPI';
 import Button from '@mui/material/Button';
 import { useIoBrokerTheme, useDialogs } from 'iobroker-react/hooks';
 import { dsDevice, watchStateID } from '../types/dsDevice';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { Paper, Table, TableBody, TableHead, TableCell, TableContainer, TableRow, Box, Grid } from '@mui/material';
 import { wizardDeviceConfig } from '../lib/wizardDeviceConfig';
 import { DeviceOptions, WizardDevice, WizardDeviceField } from '../types/wizardTypes';
 import { WizardSelect } from '../components/WizardSelect';
@@ -51,8 +51,7 @@ const _renderField = (deviceType: string, f: WizardDeviceField, state, setState)
 		case 'select': {
 			return (
 				<TableRow>
-					<TableCell sx={{ maxWidth: 1 / 2 }}>{_(f.tooltip)}</TableCell>
-
+					<TableCell>{_(f.tooltip)}</TableCell>
 					<TableCell>
 						<WizardSelect
 							optionsList={f.optionsList}
@@ -90,6 +89,7 @@ const _renderWizard = (deviceType, state, setState) => {
 
 export const AddNewDevices: React.FC = () => {
 	const [open, setOpen] = React.useState(false);
+	const [showDeviceConfig, setShowDeviceConfig] = React.useState('none');
 	const [themeName] = useIoBrokerTheme();
 	const { translate: _ } = useI18n();
 	const { showNotification } = useDialogs();
@@ -124,31 +124,52 @@ export const AddNewDevices: React.FC = () => {
 	const handleFieldChange = (event) => {
 		console.log(event.target.name, event.target.value);
 		setState({ ...state, [event.target.name]: event.target.value });
+		setShowDeviceConfig('block');
 		// setState({ ...state, dsConfigTemplate: wizardDeviceConfig[event.target.name].dsConfigTemplate });
 	};
 
 	return (
 		<div>
 			{/* <SelectDeviceType /> */}
-			<TableContainer component={Paper} elevation={1}>
+
+			<Box
+				sx={{
+					mt: '10px',
+					pb: '15px',
+				}}
+			>
+				<Grid container style={{ backgroundColor: 'lightblue' }}>
+					<Grid item md={6} justifyContent="center">
+						<Box sx={{ mx: 'auto', width: 500 }}>
+							<h3>{_('Please select the type of device to add')}</h3>
+						</Box>
+					</Grid>
+					<Grid item md={6} sx={{ mt: '10px', mb: '10px' }}>
+						<WizardSelect
+							optionsList={deviceOptions}
+							name="deviceType"
+							value={state.deviceType}
+							onChange={handleFieldChange}
+						/>
+					</Grid>
+				</Grid>
+			</Box>
+			<TableContainer sx={{ display: { xs: showDeviceConfig } }} component={Paper} elevation={1}>
 				<Table aria-label="collapsible table">
-					<TableBody>
+					<TableHead>
 						<TableRow>
-							<TableCell>
-								<WizardSelect
-									optionsList={deviceOptions}
-									name="deviceType"
-									value={state.deviceType}
-									onChange={handleFieldChange}
-								/>
+							<TableCell colSpan={3}>
+								<h3>
+									{_('Device configuration')} «{_(state.deviceType)}»
+								</h3>
 							</TableCell>
-							<TableCell></TableCell>
 						</TableRow>
 						{_renderWizard(state.deviceType, state, setState)}
-					</TableBody>
+					</TableHead>
 				</Table>
 			</TableContainer>
 			<br />
+			{JSON.stringify(state)}
 			<Button
 				disabled={state.deviceType && state[state.deviceType]['name'] ? false : true}
 				onClick={async () => {
